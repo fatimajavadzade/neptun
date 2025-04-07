@@ -12,7 +12,6 @@ import {
 function Header() {
   return (
     <div>
-        <Card/>
     </div>
   )
 }
