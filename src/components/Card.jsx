@@ -26,7 +26,7 @@ function Card({item}) {
           <p className=" text-[17px]">1</p>
           <button className="px-5  cursor-pointer text-[20px]">+</button>
         </div>
-       <Button  label={"Səbətə at"} />
+       <Button  label={"Səbətə at"} className='py-2 px-3' />
        
       </div>
     </div>

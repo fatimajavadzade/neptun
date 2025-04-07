@@ -106,7 +106,7 @@ function Main() {
             {discountedProducts.length > 0 &&
               discountedProducts.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Card item={item} />
+                  <Card item={item}/>
                 </SwiperSlide>
               ))}
           </Swiper>
