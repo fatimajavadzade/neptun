@@ -8,11 +8,12 @@ import {
   FaShoppingCart,
   FaBars,
 } from "react-icons/fa";
+import Card from "./Card.jsx";
 
 function Header() {
   return (
     <div>
-        <Card/>
+   
     </div>
   )
 }
