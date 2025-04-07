@@ -21,7 +21,7 @@ function Categories() {
         {data.map((category, index) => (
           <li
             key={index}
-            className={`flex items-center justify-between px-3 py-1.5 cursor-pointer hover:bg-gray-50 ${
+            className={`flex items-center justify-between px-3 py-3 cursor-pointer hover:bg-gray-50 ${
               activeCategory?.id === category.id ? "bg-orange-100 font-bold" : ""
             }`}
             onMouseEnter={() => setActiveCategory(category)}
