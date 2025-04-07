@@ -1,2 +1,29 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
+
+.n-container{
+  max-width: 1200px;
+  width: 100%;
+  margin: auto;
+  padding: 0 10px ;
+}
+.swiper-button-prev,.swiper-button-next{
+  background-color: rgba(255, 252, 252, 0.36) !important; 
+  color: orange !important; 
+  padding: 30px !important;
+  font-size: small;
+  border-radius: 50% !important; 
+  z-index: 10 !important; 
+} 
+.swiper-button-prev{
+  left: -30px!important;
+}
+.swiper-button-next{
+  right: -30px!important;
+}
+
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(133, 128, 128, 0.151) !important; /* Hover zamanı daha tünd olur */
+}

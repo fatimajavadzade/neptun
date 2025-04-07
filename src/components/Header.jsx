@@ -4,7 +4,7 @@ import Card from './Card'
 function Header() {
   return (
     <div>
-        <Card/>
+     
     </div>
   )
 }
