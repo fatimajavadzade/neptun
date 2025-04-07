@@ -52,7 +52,7 @@ function Categories() {
 
       {activeCategory && activeCategory.subcategory && activeCategory.subcategory.length > 0 && (
         <div
-          className="absolute left-[240px] top-0 w-[220px] max-h-[130px] overflow-y-auto bg-white shadow-md border border-gray-200 z-10"
+          className="absolute left-[240px] top-0 w-[220px] max-h-[130px] overflow-y-auto bg-white shadow-md border border-gray-200 z-100"
           onMouseEnter={() => setActiveCategory(activeCategory)}
         >
           <ul className="py-2 px-3">
