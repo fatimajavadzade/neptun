@@ -27,3 +27,7 @@
 .swiper-button-prev:hover {
   background-color: rgba(133, 128, 128, 0.151) !important; /* Hover zamanı daha tünd olur */
 }
+
+.menuCat:hover .menuSub{
+  display: block !important;
+}
