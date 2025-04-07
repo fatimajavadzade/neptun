@@ -12,7 +12,7 @@ import {
 function Header() {
   return (
     <div>
-        <header className="bg-[fff]">
+        <header className="bg-[#fff] n-container" >
           {/* Top Search Bar */}
           <div className="flex items-center justify-between py-[15px] px-[10px]">
             {/* Logo */}
