@@ -18,7 +18,7 @@ function Card({ item }) {
       <div className="p-3">
         <div className="space-y-3 flex flex-col  items-center justify-center ">
           <p className="text-sm ">
-            <span className="text-base text-[10px] font-semibold uppercase">{item?.name.length > 20 ? item.name.slice(0, 20) : item.name}</span>
+            <span className="text-base text-[10px] font-semibold uppercase">{item?.name?.length > 20 ? item?.name?.slice(0, 20) : item?.name}</span>
           </p>
           <p className="text-[22px] my-3 font-bold">{item?.price}₼</p>
           <div className="flex justify-between">

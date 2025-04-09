@@ -17,6 +17,11 @@ async function getProductsById(id) {
     return res.data
 }
 
+async function getProdBySubId(id, limit, page) {
+    const res = await axios.get(`${BASE_URL}/products/subcategory/${id}?limit=${limit}&page=${page}`)
+    return res.data
+}
+
 async function getProductByDiscount() {
     const res = await axios.get(`${BASE_URL}/products/discounted`)
     return res.data
@@ -32,5 +37,6 @@ export {
     getProductsById,
     getAllProducts,
     getProductByDiscount,
-    getProductsByPopular
+    getProductsByPopular,
+    getProdBySubId
 }

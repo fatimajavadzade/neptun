@@ -22,8 +22,7 @@ function Main() {
 
 
   return (
-    <section id="main">
-      <img src={Img1} />
+    <section id="main" className="pt-[30px]">
       <div className="n-container">
         <div className="flex justify-end">
           <a href="#" className="text-primary">Hamsına bax</a>

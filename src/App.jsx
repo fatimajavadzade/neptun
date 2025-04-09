@@ -5,20 +5,23 @@ import Footer from './components/Footer'
 import Categories from './components/Categories'
 import Slider from './components/Slider'
 import Cards from './components/Cards'
+import { Link, Route, Routes } from 'react-router-dom'
+import Home from './components/Home'
+import ProdByCategory from './components/ProductByCategory/ProdByCategory'
 
 function App() {
   return (
     <>
       <Header />
-      <div className='n-container flex gap-3'>
-        <Categories />
-       <div>
-        <Slider />
-        <Cards />
-       </div>
-      </div>
-      <Main/>
-      <Footer/>
+
+
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/product' element={<ProdByCategory />} />
+      </Routes>
+
+
+      <Footer />
     </>
   )
 }

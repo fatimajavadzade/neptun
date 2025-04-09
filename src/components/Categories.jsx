@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
 import { getAllCategories } from "../services/api";
+import { Link } from "react-router-dom";
 
 const iconData = [
   'https://neptun.az/image/catalog/icon-menu/Meyv%C9%99-v%C9%99-t%C9%99r%C9%99v%C9%99z.svg',
@@ -32,7 +33,7 @@ function Categories() {
   return (
     <section
       className="relative flex"
-      onMouseLeave={() => setActiveCategory(null)}
+      // onMouseLeave={() => setActiveCategory(null)}
     >
       <ul className="w-[240px] bg-white border border-gray-200 divide-y divide-gray-100 rounded-sm ">
         {
@@ -44,9 +45,9 @@ function Categories() {
                   src={iconData[i]}
                   className="w-[18px] h-[18px] object-contain"
                 />
-                <span className="text-[12px] font-semibold text-[#222] leading-tight">
-                  {item.categoryName}
-                </span>
+                <Link to={"/product"} className="text-[12px] font-semibold text-[#222] leading-tight">
+                  {item.categoryName} 
+                </Link>
               </div>
               <FiChevronRight className="text-[#222] w-[14px] h-[14px]" />
               {
