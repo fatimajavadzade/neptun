@@ -4,6 +4,7 @@ import { getProdBySubId } from '../../services/api'
 import { useState } from 'react'
 import Card from '../Card'
 import { Pagination } from 'antd'
+import ProductFilter from '../ProductFilter'
 
 function ProdByCategory() {
   const [data, setData] = useState()
@@ -21,6 +22,7 @@ function ProdByCategory() {
 
   return (
     <main className='min-h-screen pl-[400px]'>
+      <ProductFilter />
       <button onClick={() => setLimit(12)} className='p-2 border border-black cursor-pointer'>12</button>
       <button onClick={() => setLimit(25)} className='p-2 border border-black cursor-pointer'>25</button>
       <button onClick={() => setLimit(50)} className='p-2 border border-black cursor-pointer'>50</button>

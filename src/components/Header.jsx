@@ -10,10 +10,12 @@ import {
 } from "react-icons/fa";
 import Categories from "./Categories.jsx";
 import { Link, useLocation } from "react-router-dom";
+import FilterSidebar from "./FilterSidebar.jsx";
 
 function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";
+  const isFilter = location.pathname === "/";
   return (
     <div>
     <header className="bg-[#fff] n-container relative">
@@ -162,12 +164,20 @@ function Header() {
                 <span>Kateqoriyalar</span>
               </div>
 
-              {/* Menyu - Ana səhifədə daimi açıq, digər səhifələrdə hover ilə */}
+              {/* Bu yalnız Kateqoriyalar menyusudur */}
               <div className={`absolute top-full left-0 w-[240px] bg-white shadow-md z-50
                 ${isHome ? "block" : "hidden group-hover:block"}`}>
                 <Categories />
               </div>
             </div>
+
+            {/* Bu FilterSidebar artıq group-dan KƏNARdadır və hover təsir etmir */}
+            {!isHome && (
+              <div className="absolute top-full mt-20 z-40">
+                <FilterSidebar />
+              </div>
+            )}
+
 
             {/* Menyu */}
             <nav className="hidden lg:flex items-center gap-6 text-white">

@@ -15,6 +15,7 @@ function Detail() {
     console.log(product)
      if (Object.keys(product).length === 0) return <div className='h-[60vh] w-full flex items-center justify-center' >Yuklenirrr...</div>
   return (
+    
     <div className='n-container min-h-[80vh]' >
       <h3 className='text-gray-600 font-bold py-[36px]'>Ana Səhifə > {product.name}</h3>
       <div className="flex">
