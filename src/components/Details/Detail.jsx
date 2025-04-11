@@ -9,12 +9,13 @@ function Detail() {
       
       getProductsById(id).then(res=>setProduct(res))
       
-    },[product])
+    },[id])
     
+     if (Object.keys(product).length === 0) return <div className='h-[60vh] w-full flex items-center justify-center' >Yuklenirrr...</div>
   return (
-    <div className='n-container' >
+    <div className='n-container h-[60vh]' >
 
-      <img  className='ps-7' src={product.img[0]} alt={product.name} />
+      <img  className='ps-7' src={product.img} alt={product.name} />
     </div>
   )
 }

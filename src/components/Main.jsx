@@ -74,7 +74,7 @@ function Main() {
               {data.length > 0 &&
                 data.map((item, index) => (
                   <SwiperSlide key={index}>
-                    <Card item={item} />
+                    <Card item={item} discounted={true} />
                   </SwiperSlide>
                 ))}
             </Swiper>

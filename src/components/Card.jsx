@@ -3,7 +3,7 @@ import Button from './Button'
 import { BsHeart } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 
-function Card({ item }) {
+function Card({ item,discounted,detail }) {
  
   return (
     <Link to={`/products/${item.id}`}>
@@ -11,6 +11,7 @@ function Card({ item }) {
       <div className="relative w-[112px] h-[112px] m-auto flex flex-col  items-center justify-center">
         <button className="absolute z-9 top-1 right-2 cursor-pointer text-primary"> <BsHeart />
         </button>
+        {discounted &&<button className="  absolute top-[50%] z-9 translate-[-50%] left-[50%]">goz</button>}
         <img
           src={item?.img}
           className="object-fit object-center  dark:bg-gray-500 relative"
@@ -19,9 +20,12 @@ function Card({ item }) {
       <div className="p-3">
         <div className="space-y-3 flex flex-col  items-center justify-center ">
           <p className="text-sm ">
-            <span className="text-base text-[10px] font-semibold uppercase">{item?.name?.length > 20 ? item?.name?.slice(0, 20) : item?.name}</span>
+            <span className="text-base text-[10px] font-semibold uppercase"> 
+              {item?.name?.length > 20 ? item?.name?.slice(0, 20) : item?.name}</span>
           </p>
-          <p className="text-[22px] my-3 font-bold">{item?.price}₼</p>
+          <p className="text-[22px] my-3 font-bold"><div className=' bg-[#ffd9c0] text-[12px] p-[18px 19px] rounded-full w-[20px] h-[20px]'>20%
+              
+              </div>  {item?.price}₼</p>
           <div className="flex justify-between">
             <button className="px-5 cursor-pointer text-[20px]">-</button>
             <p className=" text-[17px]">1</p>
