@@ -8,7 +8,7 @@ function Home() {
     return (
         <>
             <div className='n-container flex gap-3'>
-                <div className='ml-[300px]'>
+                <div className='ml-[250px]'>
                     <Slider />
                     <Cards />
                 </div>
