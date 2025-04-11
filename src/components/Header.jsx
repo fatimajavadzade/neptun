@@ -9,19 +9,21 @@ import {
   FaBars,
 } from "react-icons/fa";
 import Categories from "./Categories.jsx";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
+  const isHome = location.pathname === "/";
   return (
     <div>
-      <header className="bg-[#fff] n-container relative" >
-          {/* Top Search Bar */}
-        <div className="flex items-center justify-between py-[15px] px-[10px]">
+    <header className="bg-[#fff] n-container relative">
+      {/* ...Yuxarı hissə eynidir... */}
+      <div className="flex items-center justify-between py-[15px] px-[10px]">
           {/* SOL tərəf: Logo və Axtarış */}
           <div className="flex items-center gap-4 w-full max-w-[70%]">
             {/* Logo */}
             <Link to={"/"} className="text-orange-500 text-2xl font-bold w-[264px]">
-            <svg
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="270 250 330 90"
                 fill="currentColor"
@@ -148,19 +150,24 @@ function Header() {
           </div>
         </div>
       </div>
-
-
+      {/* Kateqoriyalar və Menyu */}
       <div className="bg-orange-500 text-white text-sm font-semibold mb-3">
         <div className="flex items-center justify-between h-11 pr-4">
-          {/* Sol tərəf: Kateqoriyalar və menyular */}
+          {/* Sol tərəf */}
           <div className="flex items-center gap-6">
-            {/* Kateqoriyalar düyməsi */}
-            <div className="border-y-5 rounded-md border-orange-500">
-                <div className="w-[240px] h-11 flex items-center gap-2 bg-white  text-orange-500 font-semibold shadow-sm pl-[15px]">
-                    <FaBars className="text-orange-500 text-lg" />
-                    <span>Kateqoriyalar</span>
-                  </div>
+            {/* Kateqoriyalar düyməsi və menyu */}
+            <div className={`relative ${!isHome ? "group" : ""} border-y-5 rounded-md border-orange-500`}>
+              <div className="w-[240px] h-11 flex items-center gap-2 bg-white text-orange-500 font-semibold shadow-sm pl-[15px] cursor-pointer">
+                <FaBars className="text-orange-500 text-lg" />
+                <span>Kateqoriyalar</span>
               </div>
+
+              {/* Menyu - Ana səhifədə daimi açıq, digər səhifələrdə hover ilə */}
+              <div className={`absolute top-full left-0 w-[240px] bg-white shadow-md z-50
+                ${isHome ? "block" : "hidden group-hover:block"}`}>
+                <Categories />
+              </div>
+            </div>
 
             {/* Menyu */}
             <nav className="hidden lg:flex items-center gap-6 text-white">
@@ -173,7 +180,7 @@ function Header() {
             </nav>
           </div>
 
-          {/* Sağ tərəf: Hesab və ikonlar */}
+          {/* Sağ ikonlar */}
           <div className="flex items-center gap-4">
             <div className="hidden lg:flex items-center gap-4">
               <div className="flex items-center gap-1 cursor-pointer hover:underline">
@@ -184,11 +191,8 @@ function Header() {
                 <span>Hesabım</span>
               </div>
             </div>
-
             <FaHeart className="cursor-pointer hover:text-gray-100" />
             <FaSyncAlt className="cursor-pointer hover:text-gray-100" />
-
-            {/* Səbət */}
             <div className="relative cursor-pointer">
               <FaShoppingCart className="text-xl" />
               <span className="absolute -top-2 -right-2 bg-green-500 text-white text-[11px] rounded-full w-5 h-5 flex items-center justify-center">
@@ -198,14 +202,8 @@ function Header() {
           </div>
         </div>
       </div>
-
-
-
-        <div className="absolute z-[999]">
-          <Categories />
-        </div>
-      </header>
-    </div>
+    </header>
+  </div>
   )
 }
 
