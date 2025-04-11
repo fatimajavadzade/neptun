@@ -1,17 +1,18 @@
 import React from 'react'
 import Button from './Button'
 import { BsHeart } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 
 function Card({ item }) {
-  //  console.log(item)
+ 
   return (
+    <Link to={`/products/${item.id}`}>
     <div className="rounded-md  dark:bg-gray-50 dark:text-gray-800 w-[191px] h-full flex flex-col items-center justify-center">
       <div className="relative w-[112px] h-[112px] m-auto flex flex-col  items-center justify-center">
         <button className="absolute z-9 top-1 right-2 cursor-pointer text-primary"> <BsHeart />
         </button>
         <img
-          src={item?.img[0]}
-          alt=""
+          src={item?.img}
           className="object-fit object-center  dark:bg-gray-500 relative"
         />
       </div>
@@ -30,7 +31,8 @@ function Card({ item }) {
 
         </div>
       </div>
-    </div>
+     </div>
+    </Link>
   )
 }
 

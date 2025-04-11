@@ -8,16 +8,16 @@ import Cards from './components/Cards'
 import { Link, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import ProdByCategory from './components/ProductByCategory/ProdByCategory'
+import Detail from './components/Details/Detail'
 
 function App() {
   return (
     <>
       <Header />
-
-
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/product' element={<ProdByCategory />} />
+        <Route path='/products/:id' element={<Detail />} />
       </Routes>
 
 
