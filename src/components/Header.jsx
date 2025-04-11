@@ -11,6 +11,7 @@ import {
 import Categories from "./Categories.jsx";
 import { Link, useLocation } from "react-router-dom";
 import FilterSidebar from "./FilterSidebar.jsx";
+import { aze, contact } from "../assets/index.js";
 
 function Header() {
   const location = useLocation();
@@ -141,9 +142,9 @@ function Header() {
         {/* SAĞ tərəf: Dil və ikonlar */}
         <div className="flex items-center space-x-4">
           <div className="hidden lg:flex items-center space-x-2">
-            <img src="#" alt="AZE" className="w-5 h-auto" />
+            <img src={aze} alt="AZE" className="w-5 h-auto" />
             <span className="text-sm font-semibold">AZE</span>
-            <img src="#" alt="162" className="w-6 h-auto" />
+            <img src={contact} alt="162" className="w-[100px] h-auto" />
           </div>
           <div className="block lg:hidden">
             <button className="text-orange-500 text-2xl p-2 hover:bg-orange-100 rounded-md">
@@ -174,7 +175,7 @@ function Header() {
             {/* Bu FilterSidebar artıq group-dan KƏNARdadır və hover təsir etmir */}
             {!isHome && (
               <div className="absolute top-full mt-20 z-40">
-                <FilterSidebar />
+                {/* <FilterSidebar /> */}
               </div>
             )}
 

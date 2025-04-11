@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Card from '../Card'
 import { Pagination } from 'antd'
 import ProductFilter from '../ProductFilter'
+import FilterSidebar from '../FilterSidebar'
 
 function ProdByCategory() {
   const [data, setData] = useState()
@@ -21,11 +22,17 @@ function ProdByCategory() {
   if (data.totalProducts == 0) "axtaris uzre mehsul yoxdur"
 
   return (
-    <main className='min-h-screen pl-[400px]'>
-      <ProductFilter />
+    <main className='min-h-screen  n-container' >
+      <ProductFilter/>
+     
       <button onClick={() => setLimit(12)} className='p-2 border border-black cursor-pointer'>12</button>
       <button onClick={() => setLimit(25)} className='p-2 border border-black cursor-pointer'>25</button>
       <button onClick={() => setLimit(50)} className='p-2 border border-black cursor-pointer'>50</button>
+      <div className="flex">
+        <div className="w-[400px]">
+
+           <FilterSidebar/> 
+        </div>
       <div className=' flex flex-wrap gap-4'>
         {
           data.products.map(item => {
@@ -36,6 +43,8 @@ function ProdByCategory() {
             )
           })
         }
+      </div>
+      
       </div>
       {data.totalProducts / limit > 1 &&
         <Pagination
