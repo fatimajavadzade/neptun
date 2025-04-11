@@ -21,7 +21,7 @@ const campaigns = [
 
 function Cards() {
   return (
-    <div className="w-full px-4 py-6 bg-gray-100">
+    <div className="w-full px-4 py-6 mt-2 bg-gray-100">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {campaigns.map((item) => (
           <div key={item.id} className="bg-white rounded shadow-sm">
