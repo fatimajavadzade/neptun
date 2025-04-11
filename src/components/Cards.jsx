@@ -28,7 +28,7 @@ function Cards() {
             <div className="relative">
               <img
                 src={item.image}
-                alt={item.title}
+                alt={item.title}    
                 className="w-full h-[180px] object-cover rounded-t"
               />
             </div>
