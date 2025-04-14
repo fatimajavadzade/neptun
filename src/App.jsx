@@ -1,14 +1,11 @@
 import React from 'react'
 import Header from './components/Header'
-import Main from './components/Main'
 import Footer from './components/Footer'
-import Categories from './components/Categories'
-import Slider from './components/Slider'
-import Cards from './components/Cards'
 import { Link, Route, Routes } from 'react-router-dom'
 import Home from './components/Home'
 import ProdByCategory from './components/ProductByCategory/ProdByCategory'
 import Detail from './components/Details/Detail'
+import SearchDetails from './components/searchDetails'
 
 function App() {
   return (
@@ -18,6 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/product' element={<ProdByCategory />} />
         <Route path='/products/:id' element={<Detail />} />
+        <Route path='/searchDetails' element={<SearchDetails />} />
       </Routes>
 
 

@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import Categories from "./Categories.jsx";
 import { Link, useLocation } from "react-router-dom";
-import FilterSidebar from "./FilterSidebar.jsx";
 import { aze, contact } from "../assets/index.js";
 
 function Header() {
@@ -135,7 +134,9 @@ function Header() {
                 placeholder="Məhsulu axtarın"
                 className="w-full pr-2 py-3 outline-none text-[12px]"
               />
-              <Button label="Axtar" className="py-2 px-4 text-sm bg-orange-400 hover:bg-orange-500" />
+              <Link to={"/searchDetails"} className="flex items-center">
+                <Button label="Axtar" className="py-2 px-4 h-full text-sm bg-orange-400 hover:bg-orange-500" />
+              </Link>
             </div>
           </div>
 
