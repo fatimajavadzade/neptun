@@ -5,27 +5,30 @@ import "swiper/swiper-bundle.css";
 import { Navigation } from "swiper/modules";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import MainSlider from "./Slider/MainSlider";
-import { getAllProducts, getProductByDiscount, getProductsByPopular } from "../services/api";
+import {
+  getAllProducts,
+  getProductByDiscount,
+  getProductsByPopular,
+} from "../services/api";
 import { Img1 } from "../assets";
-
 
 function Main() {
   const [data, setData] = useState([]);
-  const [discountedProducts, setDiscountedProducts] = useState([])
-  const [mostSales, setMostSales] = useState([])
+  const [discountedProducts, setDiscountedProducts] = useState([]);
+  const [mostSales, setMostSales] = useState([]);
   useEffect(() => {
-    getAllProducts().then(res => setData(res.products))
-    getProductByDiscount().then(mina => setDiscountedProducts(mina.products))
-    getProductsByPopular().then(nurlan => setMostSales(nurlan.products))
+    getAllProducts().then((res) => setData(res.products));
+    getProductByDiscount().then((mina) => setDiscountedProducts(mina.products));
+    getProductsByPopular().then((nurlan) => setMostSales(nurlan.products));
   }, []);
-
-
 
   return (
     <section id="main" className="pt-[30px]">
       <div className="n-container">
         <div className="flex justify-end">
-          <a href="#" className="text-primary">Hamsına bax</a>
+          <a href="#" className="text-primary">
+            Hamsına bax
+          </a>
         </div>
         <div className="flex my-3">
           <div className="w-[375px] h-[375px] relative">
@@ -100,22 +103,38 @@ function Main() {
         <div className="product-images flex justify-between items-center h-[400px]">
           <div className="product-image w-[24%]">
             <a href="#">
-              <img src="https://neptun.az/image/catalog/bannerler/freshmaker.png" className="object-cover h-full w-full" alt="product-image" />
+              <img
+                src="https://neptun.az/image/catalog/bannerler/freshmaker.png"
+                className="object-cover h-full w-full"
+                alt="product-image"
+              />
             </a>
           </div>
           <div className="product-image w-[24%]">
             <a href="#">
-              <img src="https://neptun.az/image/catalog/bannerler/payman.png" className="object-cover h-full w-full" alt="product-image" />
+              <img
+                src="https://neptun.az/image/catalog/bannerler/payman.png"
+                className="object-cover h-full w-full"
+                alt="product-image"
+              />
             </a>
           </div>
           <div className="product-image w-[24%]">
             <a href="#">
-              <img src="https://neptun.az/image/catalog/bannerler/joyful.png" className="object-cover h-full w-full" alt="product-image" />
+              <img
+                src="https://neptun.az/image/catalog/bannerler/joyful.png"
+                className="object-cover h-full w-full"
+                alt="product-image"
+              />
             </a>
           </div>
           <div className="product-image w-[24%]">
             <a href="#">
-              <img src="https://neptun.az/image/catalog/bannerler/pfanner.png" className="object-cover h-full w-full" alt="product-image" />
+              <img
+                src="https://neptun.az/image/catalog/bannerler/pfanner.png"
+                className="object-cover h-full w-full"
+                alt="product-image"
+              />
             </a>
           </div>
         </div>

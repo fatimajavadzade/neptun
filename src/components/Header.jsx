@@ -24,15 +24,15 @@ function Header() {
     if (search.length > 1) {
       searchProducts(search).then((info) => {
         setSearchData(info.products.slice(0, 5));
-      })}
-      else{
-        setSearchData('')
-      }
+      });
+    } else {
+      setSearchData([]);
+    }
   }, [search]);
 
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const isFilter = location.pathname === "/";
+
   return (
     <div>
       <header className="bg-[#fff] mb-[-1px]  relative">
@@ -45,7 +45,7 @@ function Header() {
               to={"/"}
               className="text-orange-500 text-2xl font-bold w-[264px]"
             >
-              <svg 
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="270 250 330 90"
                 fill="currentColor"
@@ -215,19 +215,44 @@ function Header() {
                 className="w-full pr-2 py-3 outline-none text-[12px]"
               />
               <Link to={"/searchDetails"} className="flex items-center">
-                <Button label="Axtar" className="py-2 px-4 h-full text-sm bg-orange-400 hover:bg-orange-500" />
+                <Button
+                  label="Axtar"
+                  className="py-2 px-4 h-full text-sm bg-orange-400 hover:bg-orange-500"
+                />
               </Link>
+
+           
               {searchData.length > 0 && (
                 <div className="absolute z-[999] top-[102%] border-gray-300 border-1 bg-white min-w-[410px] min-h-[365px] ">
-                  <ul className="py-2 ">
+                  <ul className="pt-2 ">
                     {searchData.map((item) => (
-                      <li>
-                        <Link  to={`/product/${item.id}`}>  <p className="px-3 py-3">{item.name}</p> <p className="px-3 font-bold">{item.price} ₼</p> <hr className="text-gray-300"/></Link>
+                      <li className="border-b-gray-300 border-b-1" onClick={()=>(setSearchData([]), setSearch(""))}>
+                        <Link to={`/products/${item.id}`}>
+                          {" "}
+                          <div className="flex items-center">
+                            <div className="w-[60px] h-[60px] overflow-hidden">
+                              <img
+                                className="w-full h-full object-contain"
+                                src={item.img}
+                                alt=""
+                              />
+                            </div>{" "}
+                            <div className="py-4">
+                              <p className="px-3 ">{item.name}</p>{" "}
+                              <p className="px-3 font-bold">{item.price} ₼</p>
+                            </div>
+                          </div>
+                        </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
-              )}
+            )}
+               {
+               (search.length>1 && searchData.length==0)&&(
+                  <div className="absolute z-[999] top-[102%] border-gray-300 border-1 bg-white min-w-[410px] min-h-[365px] flex justify-center items-center">Bele mehsul yoxdur</div>
+                )
+              }
             </div>
           </div>
 
@@ -328,4 +353,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header;
