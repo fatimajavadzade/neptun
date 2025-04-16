@@ -10,7 +10,7 @@ import {
   getProductByDiscount,
   getProductsByPopular,
 } from "../services/api";
-import { Img1 } from "../assets";
+
 
 function Main() {
   const [data, setData] = useState([]);
