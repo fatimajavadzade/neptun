@@ -5,17 +5,20 @@ const campaigns = [
   {
     id: 1,
     title: "50 Azn 50 Bonus",
-    image: "https://neptun.az/image/cache/webp/catalog/26.04.24/50-azn-50-bonus-1143x7272-370x225.webp?v=9",
+    image:
+      "https://neptun.az/image/cache/webp/catalog/26.04.24/50-azn-50-bonus-1143x7272-370x225.webp?v=9",
   },
   {
     id: 2,
     title: "Neptunda Dadlı Endirimlər!",
-    image: "https://neptun.az/image/cache/webp/catalog/26.04.24/50-azn-50-bonus-1143x7272-370x225.webp?v=9",
+    image:
+      "https://neptun.az/image/cache/webp/catalog/26.04.24/50-azn-50-bonus-1143x7272-370x225.webp?v=9",
   },
   {
     id: 3,
     title: "Həftəsonu Endirimləri Neptunda!",
-    image: "https://neptun.az/image/cache/webp/catalog/26.04.24/50-azn-50-bonus-1143x7272-370x225.webp?v=9",
+    image:
+      "https://neptun.az/image/cache/webp/catalog/26.04.24/50-azn-50-bonus-1143x7272-370x225.webp?v=9",
   },
 ];
 
@@ -28,7 +31,7 @@ function Cards() {
             <div className="relative">
               <img
                 src={item.image}
-                alt={item.title}    
+                alt={item.title}
                 className="w-full h-[180px] object-cover rounded-t"
               />
             </div>

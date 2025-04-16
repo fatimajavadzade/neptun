@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import React, { useState } from "react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 const FilterSidebar = () => {
   const [openBrand, setOpenBrand] = useState(true);

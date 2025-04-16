@@ -1,5 +1,6 @@
 import React from "react";
 import { FaThLarge, FaBars, FaSyncAlt } from "react-icons/fa";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 const ProductFilter = () => {
   return (
@@ -27,8 +28,12 @@ const ProductFilter = () => {
             <option value="default">Əsas</option>
             <option value="adaz">Ad(A-Z)</option>
             <option value="adza">Ad(Z-A)</option>
-            <option value="priceLowHigh">Qiymət(Aşağıdan > Yuxarıya) </option>
-            <option value="priceHighLow">Qiymət(Yuxarıdan > Aşağıya) </option>
+            <option value="priceLowHigh">
+              Qiymət(Aşağıdan <MdOutlineKeyboardArrowRight /> Yuxarıya){" "}
+            </option>
+            <option value="priceHighLow">
+              Qiymət(Yuxarıdan <MdOutlineKeyboardArrowRight /> Aşağıya){" "}
+            </option>
             <option value="ratingHigh">Reytinq(yuxari)</option>
             <option value="ratingLow">Reytinq(asagi)</option>
             <option value="modelaz">Model(A-Z)</option>
@@ -38,14 +43,12 @@ const ProductFilter = () => {
 
         {/* Show count */}
         <div className="flex items-center gap-2">
-          <label className="text-sm text-black">
-            Göstər:
-          </label>
+          <label className="text-sm text-black">Göstər:</label>
           <select
             id="showCount"
             className="bg-white rounded-full px-4 py-2 text-sm font-bold text-black shadow-sm cursor-pointer"
           >
-            <option value="12">12</option>
+            <option value="12" >12</option>
             <option value="25">25</option>
             <option value="50">50</option>
             <option value="75">75</option>

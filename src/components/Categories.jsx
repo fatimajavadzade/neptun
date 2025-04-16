@@ -27,9 +27,9 @@ function Categories() {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    getAllCategories().then(aytekin => setData(aytekin))
+    getAllCategories().then(res => setData(res))
   }, [])
-
+        console.log(data)
   return (
     <section
       className="relative flex"
@@ -38,16 +38,16 @@ function Categories() {
       <ul className="w-[240px] bg-white border border-gray-200 divide-y divide-gray-100 rounded-sm ">
         {
           data.map((item, i) => (
-            <li className={`flex items-center relative  menuCat justify-between px-3 py-3 cursor-pointer hover:bg-gray-50`}
+            <li key={i} className={`flex items-center relative  menuCat justify-between px-3 py-3 cursor-pointer hover:bg-gray-50`}
             >
               <div className="flex items-center gap-2">
                 <img
                   src={iconData[i]}
                   className="w-[18px] h-[18px] object-contain"
                 />
-                <Link to={"/product"} className="text-[12px] font-semibold text-[#222] leading-tight">
+                <p to={"/product"} className="text-[12px] font-semibold text-[#222] leading-tight">
                   {item.categoryName} 
-                </Link>
+                </p>
               </div>
               <FiChevronRight className="text-[#222] w-[14px] h-[14px]" />
               {
@@ -55,11 +55,13 @@ function Categories() {
                 <div className="absolute hidden menuSub left-[240px] top-0 w-[220px] min-w-[200px]  bg-white shadow-md border border-gray-200 z-100" >
                   <ul className="py-2 px-3">
                     {
-                      item.subcategory.map(sub => (
-                        <li
+                    
+                      item.subcategory.map((sub,i) => (
+                      
+                        <li key={i}
                           className="py-1 text-[13px] text-[#222] hover:text-orange-500 cursor-pointer"
                         >
-                          <a >{sub.categoryName}</a>
+                          <Link to={`/category/${sub.id}`}  >{sub.categoryName}</Link> 
                         </li>
                       ))
                     }
