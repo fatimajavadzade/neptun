@@ -17,7 +17,7 @@ function Detail() {
   return (
     
     <div className='n-container min-h-[80vh]' >
-      <h3 className='text-gray-600 font-bold py-[36px]'>Ana Səhifə > {product.name}</h3>
+      <h3 className='text-gray-600 font-bold py-[36px]'>Ana Səhifə  {product.name}</h3>
       <div className="flex">
           <div className='w-[475px] h-[475px]'> 
             <img  className='w-full h-full object-cover' src={product.img} alt={product.name} />
