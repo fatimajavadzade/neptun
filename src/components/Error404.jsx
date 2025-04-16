@@ -1,15 +1,11 @@
 import React from "react";
 import Button from "../components/Button"; // Button faylının yolu uyğunlaşdırılmalıdır
+import { Link } from "react-router-dom";
 
 export default function Error404() {
 
   return (
     <div className="min-h-screen bg-[#f4f4f4] flex flex-col items-center justify-center text-center px-4">
-      {/* Breadcrumb */}
-      <div className="w-full max-w-6xl text-left text-gray-600 font-semibold text-sm mb-6">
-        <span className="text-gray-500">Ana Səhifə</span> &gt; Səhifə mövcud deyil!
-      </div>
-
       {/* Main Message */}
       <div className="max-w-xl">
         <h1 className="text-3xl font-extrabold text-gray-900 mb-4">SƏHİFƏ MÖVCUD DEYİL!</h1>
@@ -20,10 +16,12 @@ export default function Error404() {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            label="Davam et"
-            className="bg-orange-500 hover:bg-orange-600 py-3 px-6"
-          />
+        <Link to="/">
+  <Button
+    label="Davam et"
+    className="bg-orange-500 hover:bg-orange-600 py-3 px-6"
+  />
+</Link>
           <Button
             label="Əlaqə"
             className="bg-orange-500 hover:bg-orange-600 py-3 px-6"
