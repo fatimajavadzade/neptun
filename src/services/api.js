@@ -32,11 +32,17 @@ async function getProductsByPopular() {
     return res.data
 }
 
+async function searchProducts(name) {
+    const res = await axios.get(`${BASE_URL}/products/search?name=${name}`)
+    return res.data
+}
+
 export {
     getAllCategories,
     getProductsById,
     getAllProducts,
     getProductByDiscount,
     getProductsByPopular,
-    getProdBySubId
+    getProdBySubId,
+    searchProducts
 }
