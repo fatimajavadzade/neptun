@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "../components/Button"; // Button faylının yolu uyğunlaşdırılmalıdır
+import { Link } from "react-router-dom";
 
 export default function Error404() {
 
@@ -15,10 +16,12 @@ export default function Error404() {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            label="Davam et"
-            className="bg-orange-500 hover:bg-orange-600 py-3 px-6"
-          />
+        <Link to="/">
+  <Button
+    label="Davam et"
+    className="bg-orange-500 hover:bg-orange-600 py-3 px-6"
+  />
+</Link>
           <Button
             label="Əlaqə"
             className="bg-orange-500 hover:bg-orange-600 py-3 px-6"
