@@ -60,13 +60,3 @@
   
 
 }
-button{
-    cursor: pointer;
-    padding: 7px 20px;
-    border-radius: 5px;
-    margin: 9px 4px;
-  }
-.delete{
-  background-color: red;
-  color: white;
-} 
