@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @config "../tailwind.config.js";
 
-/* .n-container {
+ .n-container {
   max-width: 1200px;
   width: 100%;
   margin: auto;
@@ -34,7 +34,7 @@
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   background-color: rgba(133, 128, 128, 0.151) !important;
-  Hover zamanı daha tünd olur
+  /* Hover zamanı daha tünd olur */
 }
 
 .menuCat:hover .menuSub {
@@ -69,72 +69,4 @@ button{
 .delete{
   background-color: red;
   color: white;
-} */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f4f4f4;
-}
-
-.App {
-  max-width: 500px;
-  margin: 80px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  border-radius: 12px;
-  text-align: center;
-}
-
-h3 {
-  color: #333;
-  margin-bottom: 20px;
-}
-
-input[type="text"] {
-  padding: 10px 15px;
-  width: 70%;
-  font-size: 16px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  outline: none;
-  transition: border-color 0.3s ease;
-  margin-bottom: 10px;
-}
-
-input[type="text"]:focus {
-  border-color: #5c6bc0;
-}
-
-button {
-  padding: 10px 20px;
-  background-color: #5c6bc0;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  margin-left: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #3949ab;
-}
-
-h2 {
-
-  margin: 10px auto;
-  padding: 12px;
-  border-radius: 8px;
-  color: #444;
-  font-weight: normal;
-  max-width:80%;}
-  .delete{
-    background-color: red;
-    color: white;
-    height: 40px;
-  }
-  .delete:hover{
-    background-color: rgb(92, 7, 7);  }
+} 
