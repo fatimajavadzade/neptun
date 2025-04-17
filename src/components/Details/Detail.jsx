@@ -20,7 +20,7 @@ console.log(product)
 
   if (Object.keys(product).length === 0)
     return (
-      <div className="h-[60vh] w-full flex items-center justify-center">
+      <div className="h-[80vh] w-full flex items-center justify-center">
         Yuklenirrr...
       </div>
     );

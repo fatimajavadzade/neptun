@@ -3,8 +3,21 @@ import Button from "./Button";
 import { BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
+import { useState } from "react";
 
-function Card({ item, discounted, detail }) {
+function Card({ item, discounted }) {
+const[basket,setbasket]=useState([])
+
+function addToBAsket({id,name,price,count}){
+  let item={id,name,price,count}
+  if(basket.includes(item)){
+    item.count++
+  }else{
+     setbasket([...basket,item])
+  }
+  console.log(basket)
+}
+
   return (
     <Link to={`/products/${item.id}`}>
       <div className="group rounded-md  dark:bg-gray-50 dark:text-gray-800 w-[191px] h-full flex flex-col items-center justify-center">
@@ -72,7 +85,7 @@ function Card({ item, discounted, detail }) {
                 +
               </button>
             </div>
-            <Button label={"Səbətə at"} className="py-2 px-3" />
+            <Button label={"Səbətə at"} className="py-2 px-3" func={addToBAsket} />
           </div>
         </div>
       </div>
