@@ -19,11 +19,11 @@
 }
 
 .swiper-button-prev {
-  left: -30px !important;
+  /* left: -30px !important; */
 }
 
 .swiper-button-next {
-  right: -30px !important;
+  /* right: -30px !important; */
 }
 
 .ant-select-selector {
@@ -59,4 +59,22 @@
   text-align: center;
   
 
+}
+@media screen and (max-width:990px) {
+  .swiper-button-prev,
+  .swiper-button-next {
+
+    width: 10px!important;
+  }
+  .n-container{
+    max-width: 750px!important;
+    margin: auto;
+  }
+}
+@media screen and (max-width: 1199px) {
+
+  .n-container{
+    max-width: 970px;
+    margin: auto;
+  }
 }

@@ -4,6 +4,9 @@ module.exports = {
         colors: {
           primary: '#ff8300',
         },
+        screens:{
+          'xl': '1200px',
+        }
       },
     },
   };

@@ -10,12 +10,14 @@ import {
   getProductByDiscount,
   getProductsByPopular,
 } from "../services/api";
+import { useMatchMedia } from "./hooks/useMatchWidth";
 
 
 function Main() {
   const [data, setData] = useState([]);
   const [discountedProducts, setDiscountedProducts] = useState([]);
   const [mostSales, setMostSales] = useState([]);
+  const isPhone = useMatchMedia("(min-width: 776px)");
   useEffect(() => {
     getAllProducts().then((res) => setData(res.products));
     getProductByDiscount().then((mina) => setDiscountedProducts(mina.products));
@@ -30,10 +32,19 @@ function Main() {
             Hamsına bax
           </a>
         </div>
-        <div className="flex my-3">
-          <div className="w-[375px] h-[375px] relative">
+      
+        <div className="flex my-3 flex-col xl:flex-row">
+         {isPhone&& <div className=" xl:w-[375px] xl:bg-green-400 h-[375px] relative mb-[5px]">
             <Swiper
-              slidesPerView={1}
+        slidesPerView={2} 
+        breakpoints={{
+          991: {
+            slidesPerView: 3 
+          },
+          1200: {
+            slidesPerView: 1 
+          }
+        }}
               spaceBetween={20}
               navigation={{
                 nextEl: ".swiper-button-next-1",
@@ -64,9 +75,16 @@ function Main() {
               </SwiperSlide>
             </Swiper>
           </div>
-          <div className="flex flex-wrap relative w-[790px]">
+          }
+          <div className="flex flex-wrap relative w-full xl:w-[790px] justify-center">
             <Swiper
-              slidesPerView={4}
+              slidesPerView={1}
+              breakpoints={{
+                776:{slidesPerView:3},
+                1200: {
+                  slidesPerView: 4
+                }
+              }}
               spaceBetween={10}
               navigation={{
                 nextEl: ".swiper-button-next",
@@ -100,8 +118,8 @@ function Main() {
           <MainSlider title={"Endirimli mehsullar"} data={discountedProducts} />
         </div>
 
-        <div className="product-images flex justify-between items-center h-[400px]">
-          <div className="product-image w-[24%]">
+        <div className="product-images flex  justify-between flex-col sm:flex-row items-center min-h-[300px] my-5 gap-3">
+          <div className="product-image  w-90% sm:w-[24%]">
             <a href="#">
               <img
                 src="https://neptun.az/image/catalog/bannerler/freshmaker.png"
@@ -110,7 +128,7 @@ function Main() {
               />
             </a>
           </div>
-          <div className="product-image w-[24%]">
+          <div className="product-image w-90% sm:w-[24%]">
             <a href="#">
               <img
                 src="https://neptun.az/image/catalog/bannerler/payman.png"
@@ -119,7 +137,7 @@ function Main() {
               />
             </a>
           </div>
-          <div className="product-image w-[24%]">
+          <div className="product-image w-90% sm:w-[24%]">
             <a href="#">
               <img
                 src="https://neptun.az/image/catalog/bannerler/joyful.png"
@@ -128,7 +146,7 @@ function Main() {
               />
             </a>
           </div>
-          <div className="product-image w-[24%]">
+          <div className="product-image w-90% sm:w-[24%]">
             <a href="#">
               <img
                 src="https://neptun.az/image/catalog/bannerler/pfanner.png"

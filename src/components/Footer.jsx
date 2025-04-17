@@ -6,46 +6,47 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import Button from "./Button";
+import { useMatchMedia } from "./hooks/useMatchWidth";
 function Footer() {
   return (
     <footer>
       <div className="bg-primary w-full  p-[25px]">
-        <div className="footer-services  flex justify-between items-center w-[1200px]">
-          <div className="flex">
+        <div className="footer-services  flex justify-between items-center max-w-[1200px]">
+          <div className="flex  flex-col items-center text-center  sm:flex-row sm:text-start">
             <img
               src="https://neptun.az/image/footer_img/delivery.svg"
               className="w-[35px]"
               alt="footer-img"
             />
-            <span className="text-white text-[14px] font-bold mx-3">
+            <span className="text-white text-[10px] sm:text-[14px] font-bold mx-3">
               Pulsuz çatdırılma
               <br /> 50 azn-dən yuxarı
             </span>
           </div>
-          <div className="flex">
+          <div className="flex flex-col items-center text-center  sm:flex-row sm:text-start">
             <img
               src="https://neptun.az/image/footer_img/cash.svg"
               className="w-[30px]"
               alt="footer-img"
             />
-            <span className="text-white text-[14px] font-bold mx-3">
+            <span className="text-white text-[10px] sm:text-[14px] font-bold mx-3">
               Nağd və ya
               <br /> kartla ödəniş
             </span>
           </div>
-          <div className="flex">
+          <div className="flex flex-col items-center text-center  sm:flex-row sm:text-start">
             <img
               src="https://neptun.az/image/footer_img/gift.svg"
               className="w-[30px]"
               alt="footer-img"
             />
-            <span className="text-white text-[14px] font-bold mx-3">
+            <span className="text-white text-[10px] sm:text-[14px]  font-bold mx-3">
               Hədiyyə
               <br />
               kuponları
             </span>
           </div>
-          <div className="flex">
+         { useMatchMedia("(min-width:767px)")&&<><div className="flex">
             <img
               src="https://neptun.az/image/footer_img/online.svg"
               className="w-[30px]"
@@ -65,13 +66,13 @@ function Footer() {
               Onlayn
               <br /> müştəri xidmətləri
             </span>
-          </div>
+          </div></> }
         </div>
-        <div className="w-[600px] my-9">
+        <div className="max-w-[600px] my-9">
           <div className="flex justify-between items-center">
-            <p className="text-white text-[14px] font-bold mx-3">
+          { useMatchMedia("(min-width:767px)")&& <p className="text-white text-[14px] font-bold mx-3">
               Bizə abunə olun
-            </p>
+            </p>}
             <div className="flex border border-white bg-white rounded-full overflow-hidden w-[350px] h-[40px] max-w-md ml-4">
               <input
                 type="text"
@@ -85,9 +86,10 @@ function Footer() {
             </div>
           </div>
           <div className="flex justify-between items-center">
+          { useMatchMedia("(min-width:767px)")&&
             <p className="text-white text-[14px] font-bold mx-3 me-5">
               Sms xəbərdarlıq üçün
-            </p>
+            </p>}
             <div className="w-[350px] flex items-center justify-between">
               <select
                 name="number"
@@ -98,7 +100,7 @@ function Footer() {
                 <option value="055">055</option>
                 <option value="070">070</option>
               </select>
-              <div className="flex border border-white bg-white rounded-full overflow-hidden w-[250px] h-[40px] max-w-md ml-1 my-8">
+              <div className="flex border border-white bg-white rounded-full overflow-hidden max-w-[250px] h-[40px] ml-1 my-8">
                 <input
                   type="text"
                   placeholder=""
@@ -111,12 +113,12 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className="flex  items-center justify-between">
+          <div className={`flex  items-center  ${!useMatchMedia("(min-width:767px)") ? "flex-col items-start gap-2 my-3" : "justify-between "} `}>
             <p className="text-white text-[14px] font-bold mx-3 me-5">
               Bizi izləyin
             </p>
-            <div className="w-[350px]">
-              <div className="w-[220px] flex items-center justify-between">
+            <div className="max-w-[350px]">
+              <div className="max-w-[220px] flex items-center justify-between">
                 <div className=" bg-white w-[50px] h-[50px] rounded-full flex justify-center items-center">
                   <FaFacebookF className="text-primary" />
                 </div>
@@ -134,7 +136,7 @@ function Footer() {
               </div>
             </div>
           </div>
-
+          { useMatchMedia("(min-width:767px)")&&
           <div className="flex text-white justify-between my-8">
             <ul>
               <li>
@@ -192,7 +194,7 @@ function Footer() {
                 <a href="#">CV yerləşdirin</a>
               </li>
             </ul>
-          </div>
+          </div>}
           <p className="text-white text-[14px] font-bold mx-3 me-5">
             © 2003 - 2023 Neptun Supermarket. All rights reserved
           </p>

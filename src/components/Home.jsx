@@ -2,13 +2,14 @@ import React from "react";
 import Main from "./Main";
 import Slider from "./Slider";
 import Cards from "./Cards";
-import Categories from "./Categories";
+import { useMatchMedia } from "./hooks/useMatchWidth";
+
 
 function Home() {
   return (
     <>
       <div className="n-container flex gap-3">
-        <div className="ml-[250px]">
+        <div className={useMatchMedia("(min-width:990px)") ? "ml-[190px] xl:ml-[250px]":"" }>
           <Slider />
           <Cards />
         </div>

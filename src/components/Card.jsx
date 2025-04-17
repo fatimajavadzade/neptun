@@ -6,22 +6,22 @@ import { FaEye } from "react-icons/fa";
 import { useState } from "react";
 
 function Card({ item, discounted }) {
-const[basket,setbasket]=useState([])
+  const [basket, setbasket] = useState([]);
 
-function addToBAsket({id,name,price,count}){
-  let item={id,name,price,count}
-  if(basket.includes(item)){
-    item.count++
-  }else{
-     setbasket([...basket,item])
+  function addToBAsket({ id, name, price, count }) {
+    let item = { id, name, price, count };
+    if (basket.includes(item)) {
+      item.count++;
+    } else {
+      setbasket([...basket, item]);
+    }
+    console.log(basket);
   }
-  console.log(basket)
-}
 
   return (
     <Link to={`/products/${item.id}`}>
-      <div className="group rounded-md  dark:bg-gray-50 dark:text-gray-800 w-[191px] h-full flex flex-col items-center justify-center">
-        <div className="relative w-[112px] h-[112px] m-auto flex flex-col  items-center justify-center">
+      <div className="group rounded-md  dark:bg-gray-50 dark:text-gray-800 min-w-[100px] h-full flex flex-col items-center justify-center">
+        <div className="relative w-[112px] h-[112px] m-auto flex flex-col  items-center justify-center ">
           <button className="absolute z-9 top-1 right-2 cursor-pointer text-primary">
             {" "}
             <BsHeart />
@@ -85,7 +85,11 @@ function addToBAsket({id,name,price,count}){
                 +
               </button>
             </div>
-            <Button label={"Səbətə at"} className="py-2 px-3" func={addToBAsket} />
+            <Button
+              label={"Səbətə at"}
+              className="py-2 px-3"
+              func={addToBAsket}
+            />
           </div>
         </div>
       </div>

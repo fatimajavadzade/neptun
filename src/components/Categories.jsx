@@ -35,7 +35,7 @@ function Categories() {
       className="relative flex"
       // onMouseLeave={() => setActiveCategory(null)}
     >
-      <ul className="w-[240px] bg-white border border-gray-200 divide-y divide-gray-100 rounded-sm ">
+      <ul className="xl:w-[240px] w-[190px] bg-white border border-gray-200 divide-y divide-gray-100 rounded-sm ">
         {
           data.map((item, i) => (
             <li key={i} className={`flex items-center relative  menuCat justify-between px-3 py-3 cursor-pointer hover:bg-gray-50`}

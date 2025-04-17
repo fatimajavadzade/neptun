@@ -9,7 +9,14 @@ function MainSlider({title, data, discounted}) {
             <h4 className="font-bold my-4">{title}</h4>
             <div className="my-4">
                 <Swiper
-                    slidesPerView={6}
+                    slidesPerView={2}
+                    breakpoints={{
+                        479:{slidesPerView:3},
+                        767:{slidesPerView:4},
+                        1200: {
+                          slidesPerView: 6
+                        }
+                      }}
                     spaceBetween={10}
 
                 >

@@ -14,6 +14,7 @@ import { aze, contact } from "../assets/index.js";
 import { useState } from "react";
 import { useEffect } from "react";
 import { searchProducts } from "../services/api.js";
+import { useMatchMedia } from "./hooks/useMatchWidth.jsx";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -260,7 +261,7 @@ function Header() {
           </div>
           <div className="bg-orange-500">
           <div className=" n-container w-[1350px] text-white text-sm font-semibold mb-3 pr-40 ">
-            <div className="flex items-center justify-between h-11 pr-4">
+            <div className="flex items-center justify-between h-11 pr-4 mb-5">
               {/* Sol tərəf */}
               <div className="flex items-center gap-6">
                 {/* Kateqoriyalar düyməsi və menyu */}
@@ -279,12 +280,12 @@ function Header() {
                   </div>
 
                   {/* Bu yalnız Kateqoriyalar menyusudur */}
-                  <div
-                    className={`absolute top-full left-0 w-[240px] bg-white shadow-md z-50
+                  { useMatchMedia("(min-width:990px)")&& <div
+                    className={`absolute top-full left-0 w-[190px] xl:w-[240px]  bg-white shadow-md z-50
                     ${isHome ? "block" : "hidden group-hover:block"}`}
                       >
                     <Categories />
-                  </div>
+                  </div>}
                 </div>
 
                 {/* Bu FilterSidebar artıq group-dan KƏNARdadır və hover təsir etmir */}
@@ -295,7 +296,7 @@ function Header() {
                 )}
 
                 {/* Menyu */}
-                <nav className="hidden lg:flex items-center gap-6 text-white">
+          {   useMatchMedia("(min-width:1200px")&& <nav className="hidden lg:flex items-center gap-6 text-white">
                   <span className="cursor-pointer hover:underline">
                     Ana səhifə
                   </span>
@@ -313,8 +314,8 @@ function Header() {
                   </span>
                   <span className="cursor-pointer hover:underline">Əlaqə</span>
                 </nav>
-              </div>
-
+            }
+  </div>
               {/* Sağ ikonlar */}
               <div className="flex items-center gap-4">
                 <div className="hidden lg:flex items-center gap-4">

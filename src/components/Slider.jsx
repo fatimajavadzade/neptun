@@ -21,7 +21,8 @@ const slides = [
 
 function Slider() {
   return (
-    <div className="relative w-[925px] h-[400px] rounded-lg overflow-hidden">
+    <div className="relative  w-[90vw] xl:w-[925px!important] xl:h-[400px!important]  md:w-[743px] md:h-[241px] rounded-lg overflow-hidden m-auto">
+
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         navigation={{
