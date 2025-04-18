@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       <div className="n-container flex gap-3">
-        <div className={useMatchMedia("(min-width:990px)") ? "ml-[190px] xl:ml-[250px]":"" }>
+        <div className={useMatchMedia("(min-width:990px)") ? " ml-[190px]  xl:ml-[250px]":"m-auto" }>
           <Slider />
           <Cards />
         </div>
