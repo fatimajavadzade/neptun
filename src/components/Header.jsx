@@ -15,6 +15,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { searchProducts } from "../services/api.js";
 import { useMatchMedia } from "./hooks/useMatchWidth.jsx";
+import ResponsiveCategories from "./ResponsiveCategories.jsx";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -278,6 +279,7 @@ function Header() {
                   <div className="flex md:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer">
                     <FaBars className="text-white text-xl" />
                   </div>
+                  <ResponsiveCategories />
 
                   {/* Bu yalnız Kateqoriyalar menyusudur */}
                   { useMatchMedia("(min-width:990px)")&& <div
