@@ -16,11 +16,14 @@ import { useEffect } from "react";
 import { searchProducts } from "../services/api.js";
 import { useMatchMedia } from "./hooks/useMatchWidth.jsx";
 import ResponsiveCategories from "./ResponsiveCategories.jsx";
+import BasketModal from "./BasketModal.jsx";
 
 function Header() {
   const [search, setSearch] = useState("");
 
   const [searchData, setSearchData] = useState([]);
+
+  const [isBasketOpen, setIsBasketOpen] = useState(false);
 
   useEffect(() => {
     if (search.length > 1) {
@@ -331,11 +334,16 @@ function Header() {
                 </div>
                 <FaHeart className="cursor-pointer hover:text-gray-100" />
                 <FaSyncAlt className="cursor-pointer hover:text-gray-100" />
-                <div className="relative cursor-pointer">
+                <div onClick={() => setIsBasketOpen(!isBasketOpen)} className="relative cursor-pointer">
                   <FaShoppingCart className="text-xl" />
                   <span className="absolute -top-2 -right-2 bg-green-500 text-white text-[11px] rounded-full w-5 h-5 flex items-center justify-center">
                     0
                   </span>
+                  {isBasketOpen && (
+                    <div className="absolute right-0 top-[150%] z-[999]">
+                      <BasketModal />
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -343,7 +351,6 @@ function Header() {
         </div>
         </div>
       </header>
-
     </div>
   );
 }
