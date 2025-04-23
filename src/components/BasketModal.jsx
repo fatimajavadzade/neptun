@@ -50,9 +50,11 @@ const BasketModal = () => {
             Ümumi məbləğ: <span className="text-black font-normal">{mebleg.toFixed(2)}$</span>
         </p>
         <div className="mt-4 flex justify-between">
-          <button className="bg-gray-700 text-white px-6 py-2 rounded-full text-sm font-medium">
+        <Link 
+          to={`/basket`}
+          className="bg-gray-700 text-white px-6 py-2 rounded-full text-sm font-medium text-center inline-block">
             Səbət
-          </button>
+        </Link>
           <button className="bg-orange-500 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-orange-600">
             Sifarişi rəsmiləşdir
           </button>

@@ -8,6 +8,7 @@ import Error404 from './components/Error404'
 import Landing from './Layout/Landing'
 import { useEffect } from 'react'
 import scrollToTop from './utils/scrollToTop'
+import Basket from './components/Basket'
 
 function App() {
   const {pathname}=useLocation()
@@ -21,6 +22,7 @@ function App() {
         <Route path='/products/:id' element={<Detail />} />
         <Route path='/category/:id' element={<ProdByCategory />} />
         <Route path='/searchDetails' element={<SearchDetails />} />
+        <Route path="/basket" element={<Basket />} />
       </Route>
         <Route path='*' element={<Error404/>}/>
       </Routes>
