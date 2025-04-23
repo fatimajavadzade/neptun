@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "./Button";
 import { BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
-import { useState } from "react";
+import { BASKET } from "../contexts/BasketContext";
 
 function Card({ item, discounted }) {
-  const [basket, setbasket] = useState([]);
+  const {basket, setbasket} = useContext(BASKET);
 
-  function addToBAsket({ id, name, price, count }) {
-    let item = { id, name, price, count };
-    if (basket.includes(item)) {
-      item.count++;
-    } else {
-      setbasket([...basket, item]);
+   function addToBasket( id, name, price, count = 1 ) {
+    let item={id,price,name,count};
+    const yoxla=basket.find(el=>el.id==item.id);
+   if(yoxla){
+        yoxla.count++
+   }
+    else{
+      setbasket([...basket,item])
     }
-    console.log(basket);
-  }
-
+    console.log(basket)
+   }
+   
   return (
     <Link to={`/products/${item.id}`}>
       <div className="group rounded-md  dark:bg-gray-50 dark:text-gray-800 min-w-[100px] h-full flex flex-col items-center justify-center">
@@ -88,7 +90,8 @@ function Card({ item, discounted }) {
             <Button
               label={"Səbətə at"}
               className="py-2 px-3"
-              func={addToBAsket}
+              func={()=>{
+                 addToBasket(item?.id, item?.name, item?.price)}}
             />
           </div>
         </div>
