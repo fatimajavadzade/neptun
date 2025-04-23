@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "./Button.jsx";
 import {
   FaSearch,
@@ -17,6 +17,7 @@ import { searchProducts } from "../services/api.js";
 import { useMatchMedia } from "./hooks/useMatchWidth.jsx";
 import ResponsiveCategories from "./ResponsiveCategories.jsx";
 import BasketModal from "./BasketModal.jsx";
+import { BASKET } from "../contexts/BasketContext.jsx";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -24,7 +25,15 @@ function Header() {
   const [searchData, setSearchData] = useState([]);
 
   const [isBasketOpen, setIsBasketOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
+  const {basket} = useContext(BASKET);
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }})
   useEffect(() => {
     if (search.length > 1) {
       searchProducts(search).then((info) => {
@@ -279,10 +288,11 @@ function Header() {
                     <span>Kateqoriyalar</span>
                   </div>
 
-                  <div className="flex md:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer">
+                  <div onClick={()=>setOpen(!open)
+                  } className="flex md:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer">
                     <FaBars className="text-white text-xl" />
                   </div>
-                  <ResponsiveCategories />
+                  {open&& <ResponsiveCategories />}
 
                   {/* Bu yalnız Kateqoriyalar menyusudur */}
                   { useMatchMedia("(min-width:990px)")&& <div
@@ -337,7 +347,7 @@ function Header() {
                 <div onClick={() => setIsBasketOpen(!isBasketOpen)} className="relative cursor-pointer">
                   <FaShoppingCart className="text-xl" />
                   <span className="absolute -top-2 -right-2 bg-green-500 text-white text-[11px] rounded-full w-5 h-5 flex items-center justify-center">
-                    0
+                   {basket.length}
                   </span>
                   {isBasketOpen && (
                     <div className="absolute right-0 top-[150%] z-[999]">

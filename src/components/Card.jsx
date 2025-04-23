@@ -6,20 +6,22 @@ import { FaEye } from "react-icons/fa";
 import { BASKET } from "../contexts/BasketContext";
 
 function Card({ item, discounted }) {
-  const {basket, setbasket} = useContext(BASKET);
+  const {basket, setBasket} = useContext(BASKET);
 
-   function addToBasket( id, name, price, count = 1 ) {
-    let item={id,price,name,count};
+   function addToBasket( id, name, price,img, count = 1 ) {
+    let item={id,price,img,name,count};
     const yoxla=basket.find(el=>el.id==item.id);
    if(yoxla){
         yoxla.count++
    }
     else{
-      setbasket([...basket,item])
+      setBasket([...basket,item])
     }
     console.log(basket)
    }
-   
+   function artir(item){
+        console.log('isledi')
+   }
   return (
     <Link to={`/products/${item.id}`}>
       <div className="group rounded-md  dark:bg-gray-50 dark:text-gray-800 min-w-[100px] h-full flex flex-col items-center justify-center">
@@ -78,12 +80,13 @@ function Card({ item, discounted }) {
                 -
               </button>
               <p className=" text-[17px] mt-1">
-                1{" "}
+                {item.count?item.count:1}
                 <span className="text-[11px] inline-block  translate-y-[-4px] ms-1">
                   Eded
                 </span>
               </p>
-              <button className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
+              <button onClick={()=>{
+                 artir(item)}} className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
                 +
               </button>
             </div>
@@ -91,7 +94,7 @@ function Card({ item, discounted }) {
               label={"Səbətə at"}
               className="py-2 px-3"
               func={()=>{
-                 addToBasket(item?.id, item?.name, item?.price)}}
+                 addToBasket(item?.id, item?.name, item?.price,item?.img)}}
             />
           </div>
         </div>

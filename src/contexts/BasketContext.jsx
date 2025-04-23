@@ -1,11 +1,11 @@
 import React, { createContext, useState } from "react";
 
-export const BASKET = createContext([]);
+export const BASKET = createContext();
 
 function BasketContext({children}) {
-  const [basket, setbasket] = useState([]);
-  const data = { basket, setbasket };
-  return <BASKET.Provider value={data}>
+  const [basket, setBasket] = useState([]);
+ 
+  return <BASKET.Provider value={{basket, setBasket}}>
         {children}
     </BASKET.Provider>;
 }
