@@ -18,8 +18,10 @@ function Card({ item, discounted }) {
     const yoxla = basket.find((el) => el.id == item.id);
     if (yoxla) {
       yoxla.count++;
+      toast.error("Sepetde var onsuzda")
     } else {
       setBasket([...basket, item]);
+      toast.success("Məhsul səbətə əlavə olundu!");
     }
     console.log(basket)
    }
