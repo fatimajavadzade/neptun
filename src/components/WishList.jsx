@@ -59,7 +59,7 @@ function WishList() {
               {item.price} $
             </p>
             <button onClick={() => {
-                addToBasket(item); 
+                addToBasket({...item, count: 1}); 
                 delWish(item.id); 
                 toast.success("Məhsul səbətə əlavə olundu!");
               }} 
