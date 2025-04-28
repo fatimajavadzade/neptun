@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useMatchMedia = (query) => {
-  console.log(window.matchMedia(query).matches,"mstche")
-  console.log(window.matchMedia(query),"tek")
-  
+export const useMatchMedia = (query) => {  
     const [matches, setMatches] = useState(window.matchMedia(query).matches);
 
     useEffect(() => {

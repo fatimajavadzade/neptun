@@ -4,31 +4,40 @@ import { BsHeart } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { BASKET } from "../contexts/BasketContext";
+import { WishListCntx } from "../contexts/WishContext";
+import toast from "react-hot-toast";
 
 function Card({ item, discounted }) {
-  const {basket, setBasket} = useContext(BASKET);
+  const { basket, setBasket } = useContext(BASKET);
 
-   function addToBasket( id, name, price,img, count = 1 ) {
-    let item={id,price,img,name,count};
-    const yoxla=basket.find(el=>el.id==item.id);
-   if(yoxla){
-        yoxla.count++
-   }
-    else{
-      setBasket([...basket,item])
+  const { addWish } = useContext(WishListCntx);
+  // console.log(wish);
+
+  function addToBasket(id, name, price, img, count = 1) {
+    let item = { id, price, img, name, count };
+    const yoxla = basket.find((el) => el.id == item.id);
+    if (yoxla) {
+      yoxla.count++;
+    } else {
+      setBasket([...basket, item]);
     }
-    console.log(basket)
-   }
-   function artir(item){
-        console.log('isledi')
-   }
+    console.log(basket);
+  }
+  function artir(item) {
+    console.log("isledi");
+  }
+
   return (
     <Link to={`/products/${item.id}`}>
       <div className="group rounded-md  dark:bg-gray-50 dark:text-gray-800 min-w-[100px] h-full flex flex-col items-center justify-center">
         <div className="relative w-[112px] h-[112px] m-auto flex flex-col  items-center justify-center ">
           <button className="absolute z-9 top-1 right-2 cursor-pointer text-primary">
-            {" "}
-            <BsHeart />
+            <BsHeart
+              onClick={(e) => {
+                e.preventDefault();
+                addWish(item);
+              }}
+            />
           </button>
           {discounted && (
             <button
@@ -80,21 +89,26 @@ function Card({ item, discounted }) {
                 -
               </button>
               <p className=" text-[17px] mt-1">
-                {item.count?item.count:1}
+                {item.count ? item.count : 1}
                 <span className="text-[11px] inline-block  translate-y-[-4px] ms-1">
                   Eded
                 </span>
               </p>
-              <button onClick={()=>{
-                 artir(item)}} className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
+              <button
+                onClick={() => {
+                  artir(item);
+                }}
+                className="px-5  cursor-pointer text-[20px]  text-primary font-bold"
+              >
                 +
               </button>
             </div>
             <Button
               label={"Səbətə at"}
               className="py-2 px-3"
-              func={()=>{
-                 addToBasket(item?.id, item?.name, item?.price,item?.img)}}
+              func={() => {
+                addToBasket(item?.id, item?.name, item?.price, item?.img);
+              }}
             />
           </div>
         </div>
