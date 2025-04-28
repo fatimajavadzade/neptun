@@ -19,8 +19,14 @@ function Card({ item, discounted }) {
     }
     console.log(basket)
    }
-   function artir(item){
-        console.log('isledi')
+   function changeCount(item,param){
+          if(param=="plus"){
+            item.count++
+          }
+          else{
+            item.count--
+          }
+          
    }
   return (
     <Link to={`/products/${item.id}`}>
@@ -76,17 +82,18 @@ function Card({ item, discounted }) {
               {(item?.price - item?.price * 0.3).toFixed(2)}₼
             </div>
             <div className="flex justify-between">
-              <button className="px-5 cursor-pointer text-[20px] text-primary font-bold">
+              <button onClick={()=>changeCount(item,"minus")} className="px-5 cursor-pointer text-[20px] text-primary font-bold">
                 -
               </button>
               <p className=" text-[17px] mt-1">
-                {item.count?item.count:1}
+                {item?.count}
                 <span className="text-[11px] inline-block  translate-y-[-4px] ms-1">
                   Eded
                 </span>
               </p>
-              <button onClick={()=>{
-                 artir(item)}} className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
+              <button onClick={(e)=>{e.preventDefault()
+              e.stopPropagation()
+                 changeCount(item,"plus")}} className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
                 +
               </button>
             </div>

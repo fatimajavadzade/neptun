@@ -29,7 +29,6 @@ function Categories() {
   useEffect(() => {
     getAllCategories().then(res => setData(res))
   }, [])
-        console.log(data)
   return (
     <section
       className="relative flex"
