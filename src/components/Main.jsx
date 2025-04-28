@@ -34,7 +34,7 @@ function Main() {
         </div>
       
         <div className="flex my-3 flex-col xl:flex-row">
-         {isPhone&& <div className=" xl:w-[375px] xl:bg-green-400 h-[375px] relative mb-[5px]">
+         {isPhone&& <div className=" xl:w-[375px] h-[375px] relative mb-[5px]">
             <Swiper
         slidesPerView={2} 
         breakpoints={{
