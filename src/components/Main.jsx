@@ -20,8 +20,8 @@ function Main() {
   const isPhone = useMatchMedia("(min-width: 776px)");
   useEffect(() => {
     getAllProducts().then((res) => setData(res.products));
-    getProductByDiscount().then((mina) => setDiscountedProducts(mina.products));
-    getProductsByPopular().then((nurlan) => setMostSales(nurlan.products));
+    getProductByDiscount().then((data) => setDiscountedProducts(data.products));
+    getProductsByPopular().then((data) => setMostSales(data.products));
   }, []);
 
   return (

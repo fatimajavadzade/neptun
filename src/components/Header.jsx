@@ -21,21 +21,32 @@ import { BASKET } from "../contexts/BasketContext.jsx";
 
 function Header() {
   const [search, setSearch] = useState("");
-
   const [searchData, setSearchData] = useState([]);
-
   const [isBasketOpen, setIsBasketOpen] = useState(false);
   const [open, setOpen] = useState(false);
+<<<<<<< HEAD
+  const {basket} = useContext(BASKET);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+  let isSmallScreen=useMatchMedia("(max-width:767px)")
+=======
 
   const { basket } = useContext(BASKET);
+>>>>>>> faf84ada3a92b3774eb75cce4ab7518464765d77
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
+<<<<<<< HEAD
+    }})
+ 
+    useEffect(() => {
+=======
     }
   });
   useEffect(() => {
+>>>>>>> faf84ada3a92b3774eb75cce4ab7518464765d77
     if (search.length > 1) {
       searchProducts(search).then((info) => {
         setSearchData(info.products.slice(0, 5));
@@ -45,8 +56,14 @@ function Header() {
     }
   }, [search]);
 
-  const location = useLocation();
-  const isHome = location.pathname === "/";
+  
+  useEffect(() => {
+    if (!isSmallScreen) {
+      setOpen(false);  
+    }
+  }, [isSmallScreen]);  
+  
+ 
 
   return (
     <div>
@@ -292,23 +309,22 @@ function Header() {
                       <span>Kateqoriyalar</span>
                     </div>
 
-                    <div
-                      onClick={() => setOpen(!open)}
-                      className="flex md:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer"
-                    >
-                      <FaBars className="text-white text-xl" />
-                    </div>
-                    {open && <ResponsiveCategories />}
+                  <div onClick={()=>setOpen(!open)
+                  } className="flex md:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer">
+                    <FaBars className="text-white text-xl" />
+                  </div>
+                
+                  
+                { open && <ResponsiveCategories />}
 
-                    {/* Bu yalnız Kateqoriyalar menyusudur */}
-                    {useMatchMedia("(min-width:990px)") && (
-                      <div
-                        className={`absolute top-full left-0 w-[190px] xl:w-[240px]  bg-white shadow-md z-50
+                  {/* Bu yalnız Kateqoriyalar menyusudur */}
+                  { useMatchMedia("(min-width:767px)")&& <div
+                    className={`absolute top-full left-0 w-[190px] xl:w-[240px]  bg-white shadow-md z-50
                     ${isHome ? "block" : "hidden group-hover:block"}`}
                       >
                         <Categories />
                       </div>
-                    )}
+                    }
                   </div>
 
                   {/* Bu FilterSidebar artıq group-dan KƏNARdadır və hover təsir etmir */}

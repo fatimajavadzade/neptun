@@ -15,7 +15,7 @@ function Detail() {
       .then((res) => setProduct(res))
       .catch((err) => setError(true));
   }, [id]);
-console.log(product)
+
   if (error) return <Error404 />;
 
   if (Object.keys(product).length === 0)
