@@ -324,7 +324,7 @@ function Header() {
                       >
                         <Categories />
                       </div>
-                    )}
+                    }
                   </div>
 
                   {/* Bu FilterSidebar artıq group-dan KƏNARdadır və hover təsir etmir */}
