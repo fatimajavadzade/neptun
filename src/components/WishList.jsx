@@ -2,9 +2,12 @@ import useConfig from "antd/es/config-provider/hooks/useConfig";
 import React, { useContext } from "react";
 import { WishListCntx } from "../contexts/WishContext";
 import { Link } from "react-router-dom";
+import { BASKET } from "../contexts/BasketContext";
+import { toast } from "react-hot-toast";
 
 function WishList() {
   const { wish, clearWish, delWish } = useContext(WishListCntx);
+  const { addToBasket } = useContext(BASKET);
 
   return (
     <section className="wrapper n-container py-5 px-3 relative">
@@ -55,7 +58,12 @@ function WishList() {
             <p className="block font-semibold py-3 italic text-[1.2em]">
               {item.price} $
             </p>
-            <button className="rounded-md text-nowrap flex gap-2 w-full text-[.8em] border border-[#43766C] transition-all duration-200 hover:bg-[#43766c2b] px-4 py-2 font-semibold">
+            <button onClick={() => {
+                addToBasket(item); 
+                delWish(item.id); 
+                toast.success("Məhsul səbətə əlavə olundu!");
+              }} 
+              className="rounded-md text-nowrap flex gap-2 w-full text-[.8em] border border-[#43766C] transition-all duration-200 hover:bg-[#43766c2b] px-4 py-2 font-semibold">
               <svg
                 stroke="currentColor"
                 fill="currentColor"

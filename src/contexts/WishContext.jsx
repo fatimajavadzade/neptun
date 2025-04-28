@@ -28,7 +28,7 @@ function WishContext({ children }) {
   }
 
   function delWish(id) {
-    toast.error("Artiq varlisan!");
+    toast.error("Məhsul wishList-dən silindi!");
     const yeniElem = wish.filter((item) => item.id != id);
     setWish(yeniElem);
     localStorage.setItem("localWish", JSON.stringify(yeniElem));
