@@ -3,6 +3,7 @@ import { MdDelete } from 'react-icons/md';
 import { BASKET } from '../contexts/BasketContext';
 import { CiShoppingBasket } from 'react-icons/ci';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const BasketModal = () => {
   const {basket, setBasket} = useContext(BASKET);
@@ -30,7 +31,8 @@ const BasketModal = () => {
       <div className="text-sm text-gray-600">x {item.count}</div>
       <div className="text-sm font-semibold text-gray-800">{item.price}₼</div>
       <button className="text-gray-500 hover:text-red-600 cursor-pointer" onClick={(e) =>{ 
-        e.stopPropagation()
+        e.stopPropagation();
+        toast.error("Məhsul səbətdən silindi!");
         deleteItem(item.id)}}>
         <MdDelete  size={20} />
       </button>

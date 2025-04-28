@@ -27,7 +27,7 @@ function Header() {
   const {basket} = useContext(BASKET);
   const location = useLocation();
   const isHome = location.pathname === "/";
-  let isSmallScreen=useMatchMedia("(max-width:767px)")
+  let isSmallScreen=useMatchMedia("(max-width:1024px)")
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -291,15 +291,15 @@ function Header() {
                   <div
                     className={`relative ${
                       !isHome ? "group" : ""
-                    } md:border-y-5 rounded-md border-orange-500`}
+                    } lg:border-y-5 rounded-md border-orange-500`}
                   >
-                    <div className="w-[240px] h-11 hidden md:flex items-center gap-2 bg-white text-orange-500 font-semibold shadow-sm pl-[15px] cursor-pointer">
+                    <div className="w-[240px] h-11 hidden lg:flex items-center gap-2 bg-white text-orange-500 font-semibold shadow-sm pl-[15px] cursor-pointer">
                       <FaBars className="text-orange-500 text-lg" />
                       <span>Kateqoriyalar</span>
                     </div>
 
                   <div onClick={()=>setOpen(!open)
-                  } className="flex md:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer">
+                  } className="flex lg:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer">
                     <FaBars className="text-white text-xl" />
                   </div>
                 
@@ -307,7 +307,7 @@ function Header() {
                 { open && <ResponsiveCategories />}
 
                   {/* Bu yalnız Kateqoriyalar menyusudur */}
-                  { useMatchMedia("(min-width:767px)")&& <div
+                  { useMatchMedia("(min-width:1024px)")&& <div
                     className={`absolute top-full left-0 w-[190px] xl:w-[240px]  bg-white shadow-md z-50
                     ${isHome ? "block" : "hidden group-hover:block"}`}
                       >

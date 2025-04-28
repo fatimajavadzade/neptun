@@ -24,7 +24,7 @@ function WishList() {
           sebeti temizle
         </button>
       </div>
-      <div className="flex items-center gap-[30px] flex-wrap py-[30px]">
+      <div className="flex items-center gap-[30px] flex-wrap py-[30px] min-h-[60vh]">
         {wish.map((item) => (
           <div className="border card hover:shadow-md transition-all rounded-md p-3 bg-white inline-block">
             <div className="relative">
