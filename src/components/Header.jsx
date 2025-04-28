@@ -24,18 +24,29 @@ function Header() {
   const [searchData, setSearchData] = useState([]);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
   const [open, setOpen] = useState(false);
+<<<<<<< HEAD
   const {basket} = useContext(BASKET);
   const location = useLocation();
   const isHome = location.pathname === "/";
   let isSmallScreen=useMatchMedia("(max-width:767px)")
+=======
+
+  const { basket } = useContext(BASKET);
+>>>>>>> faf84ada3a92b3774eb75cce4ab7518464765d77
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
+<<<<<<< HEAD
     }})
  
     useEffect(() => {
+=======
+    }
+  });
+  useEffect(() => {
+>>>>>>> faf84ada3a92b3774eb75cce4ab7518464765d77
     if (search.length > 1) {
       searchProducts(search).then((info) => {
         setSearchData(info.products.slice(0, 5));
@@ -220,56 +231,59 @@ function Header() {
                   </g>
                 </svg>
               </Link>
-            <div className="flex border relative border-orange-400 rounded-full w-full md:w-md max-w-md">
-              <div className="flex items-center px-3 text-orange-400">
-                <FaSearch />
-              </div>
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Məhsulu axtarın"
-                className="sm:py-3 w-full pr-2 outline-none text-[12px]"
-              />
-              <Link to={"/searchDetails"} className="flex items-center">
-                <Button
-                  label="Axtar"
-                  className="py-1 px-4 h-full text-sm bg-orange-400 hover:bg-orange-500"
-                />
-              </Link>
-            
-              {searchData.length > 0 && (
-                <div className="absolute z-[999] top-[102%] border-gray-300 border-1 bg-white min-w-[410px] min-h-[365px] ">
-                  <ul className="pt-2 ">
-                    {searchData.map((item) => (
-                      <li className="border-b-gray-300 border-b-1" onClick={()=>(setSearchData([]), setSearch(""))}>
-                        <Link to={`/products/${item.id}`}>
-                          {" "}
-                          <div className="flex items-center">
-                            <div className="w-[60px] h-[60px] overflow-hidden">
-                              <img
-                                className="w-full h-full object-contain"
-                                src={item.img}
-                                alt=""
-                              />
-                            </div>{" "}
-                            <div className="py-4">
-                              <p className="px-3 ">{item.name}</p>{" "}
-                              <p className="px-3 font-bold">{item.price} ₼</p>
-                            </div>
-                          </div>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="flex border relative border-orange-400 rounded-full w-full md:w-md max-w-md">
+                <div className="flex items-center px-3 text-orange-400">
+                  <FaSearch />
                 </div>
-              )}
-                {
-                (search.length>1 && searchData.length==0)&&(
-                  <div className="absolute z-[999] top-[102%] border-gray-300 border-1 bg-white min-w-[410px] min-h-[365px] flex justify-center items-center">Bele mehsul yoxdur</div>
-                )
-              }
-            </div>
+                <input
+                  type="text"
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                  placeholder="Məhsulu axtarın"
+                  className="sm:py-3 w-full pr-2 outline-none text-[12px]"
+                />
+                <Link to={"/searchDetails"} className="flex items-center">
+                  <Button
+                    label="Axtar"
+                    className="py-1 px-4 h-full text-sm bg-orange-400 hover:bg-orange-500"
+                  />
+                </Link>
+
+                {searchData.length > 0 && (
+                  <div className="absolute z-[999] top-[102%] border-gray-300 border-1 bg-white min-w-[410px] min-h-[365px] ">
+                    <ul className="pt-2 ">
+                      {searchData.map((item) => (
+                        <li
+                          className="border-b-gray-300 border-b-1"
+                          onClick={() => (setSearchData([]), setSearch(""))}
+                        >
+                          <Link to={`/products/${item.id}`}>
+                            {" "}
+                            <div className="flex items-center">
+                              <div className="w-[60px] h-[60px] overflow-hidden">
+                                <img
+                                  className="w-full h-full object-contain"
+                                  src={item.img}
+                                  alt=""
+                                />
+                              </div>{" "}
+                              <div className="py-4">
+                                <p className="px-3 ">{item.name}</p>{" "}
+                                <p className="px-3 font-bold">{item.price} ₼</p>
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {search.length > 1 && searchData.length == 0 && (
+                  <div className="absolute z-[999] top-[102%] border-gray-300 border-1 bg-white min-w-[410px] min-h-[365px] flex justify-center items-center">
+                    Bele mehsul yoxdur
+                  </div>
+                )}
+              </div>
             </div>
             <div className="hidden lg:flex items-center space-x-4">
               <div className="flex items-center space-x-2">
@@ -280,20 +294,20 @@ function Header() {
             </div>
           </div>
           <div className="bg-orange-500">
-          <div className=" n-container w-[1350px] text-white text-sm font-semibold mb-3 pr-40 ">
-            <div className="flex items-center justify-between h-11 pr-4 mb-5">
-              {/* Sol tərəf */}
-              <div className="flex items-center gap-6">
-                {/* Kateqoriyalar düyməsi və menyu */}
-                <div
-                  className={`relative ${
-                    !isHome ? "group" : ""
-                  } md:border-y-5 rounded-md border-orange-500`}
-                >
-                  <div className="w-[240px] h-11 hidden md:flex items-center gap-2 bg-white text-orange-500 font-semibold shadow-sm pl-[15px] cursor-pointer">
-                    <FaBars className="text-orange-500 text-lg" />
-                    <span>Kateqoriyalar</span>
-                  </div>
+            <div className=" n-container w-[1350px] text-white text-sm font-semibold mb-3 pr-40 ">
+              <div className="flex items-center justify-between h-11 pr-4 mb-5">
+                {/* Sol tərəf */}
+                <div className="flex items-center gap-6">
+                  {/* Kateqoriyalar düyməsi və menyu */}
+                  <div
+                    className={`relative ${
+                      !isHome ? "group" : ""
+                    } md:border-y-5 rounded-md border-orange-500`}
+                  >
+                    <div className="w-[240px] h-11 hidden md:flex items-center gap-2 bg-white text-orange-500 font-semibold shadow-sm pl-[15px] cursor-pointer">
+                      <FaBars className="text-orange-500 text-lg" />
+                      <span>Kateqoriyalar</span>
+                    </div>
 
                   <div onClick={()=>setOpen(!open)
                   } className="flex md:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer">
@@ -308,66 +322,75 @@ function Header() {
                     className={`absolute top-full left-0 w-[190px] xl:w-[240px]  bg-white shadow-md z-50
                     ${isHome ? "block" : "hidden group-hover:block"}`}
                       >
-                    <Categories />
-                  </div>}
-                </div>
+                        <Categories />
+                      </div>
+                    )}
+                  </div>
 
-                {/* Bu FilterSidebar artıq group-dan KƏNARdadır və hover təsir etmir */}
-                {!isHome && (
-                  <div className="absolute top-full mt-20 z-40">
-                    {/* <FilterSidebar /> */}
-                  </div>
-                )}
-
-                {/* Menyu */}
-          {   useMatchMedia("(min-width:1200px")&& <nav className="hidden lg:flex items-center gap-6 text-white">
-                  <span className="cursor-pointer hover:underline">
-                    Ana səhifə
-                  </span>
-                  <span className="cursor-pointer hover:underline">
-                    Haqqımızda
-                  </span>
-                  <span className="cursor-pointer hover:underline">
-                    Aksiyalar
-                  </span>
-                  <span className="cursor-pointer hover:underline">
-                    Supermarketlər
-                  </span>
-                  <span className="cursor-pointer hover:underline">
-                    Karyera
-                  </span>
-                  <span className="cursor-pointer hover:underline">Əlaqə</span>
-                </nav>
-            }
-  </div>
-              {/* Sağ ikonlar */}
-              <div className="flex items-center gap-4">
-                <div className="hidden lg:flex items-center gap-4">
-                  <div className="flex items-center gap-1 cursor-pointer hover:underline">
-                    <FaLock />
-                    <span>Giriş</span>
-                  </div>
-                  <div className="flex items-center gap-1 cursor-pointer hover:underline">
-                    <span>Hesabım</span>
-                  </div>
-                </div>
-                <FaHeart className="cursor-pointer hover:text-gray-100" />
-                <FaSyncAlt className="cursor-pointer hover:text-gray-100" />
-                <div onClick={() => setIsBasketOpen(!isBasketOpen)} className="relative cursor-pointer">
-                  <FaShoppingCart className="text-xl" />
-                  <span className="absolute -top-2 -right-2 bg-green-500 text-white text-[11px] rounded-full w-5 h-5 flex items-center justify-center">
-                   {basket.length}
-                  </span>
-                  {isBasketOpen && (
-                    <div className="absolute right-0 top-[150%] z-[999]">
-                      <BasketModal />
+                  {/* Bu FilterSidebar artıq group-dan KƏNARdadır və hover təsir etmir */}
+                  {!isHome && (
+                    <div className="absolute top-full mt-20 z-40">
+                      {/* <FilterSidebar /> */}
                     </div>
                   )}
+
+                  {/* Menyu */}
+                  {useMatchMedia("(min-width:1200px") && (
+                    <nav className="hidden lg:flex items-center gap-6 text-white">
+                      <span className="cursor-pointer hover:underline">
+                        Ana səhifə
+                      </span>
+                      <span className="cursor-pointer hover:underline">
+                        Haqqımızda
+                      </span>
+                      <span className="cursor-pointer hover:underline">
+                        Aksiyalar
+                      </span>
+                      <span className="cursor-pointer hover:underline">
+                        Supermarketlər
+                      </span>
+                      <span className="cursor-pointer hover:underline">
+                        Karyera
+                      </span>
+                      <span className="cursor-pointer hover:underline">
+                        Əlaqə
+                      </span>
+                    </nav>
+                  )}
+                </div>
+                {/* Sağ ikonlar */}
+                <div className="flex items-center gap-4">
+                  <div className="hidden lg:flex items-center gap-4">
+                    <div className="flex items-center gap-1 cursor-pointer hover:underline">
+                      <FaLock />
+                      <span>Giriş</span>
+                    </div>
+                    <div className="flex items-center gap-1 cursor-pointer hover:underline">
+                      <span>Hesabım</span>
+                    </div>
+                  </div>
+                  <Link to={"/wishlist"}>
+                    <FaHeart className="cursor-pointer hover:text-gray-100" />
+                  </Link>
+                  <FaSyncAlt className="cursor-pointer hover:text-gray-100" />
+                  <div
+                    onClick={() => setIsBasketOpen(!isBasketOpen)}
+                    className="relative cursor-pointer"
+                  >
+                    <FaShoppingCart className="text-xl" />
+                    <span className="absolute -top-2 -right-2 bg-green-500 text-white text-[11px] rounded-full w-5 h-5 flex items-center justify-center">
+                      {basket.length}
+                    </span>
+                    {isBasketOpen && (
+                      <div className="absolute right-0 top-[150%] z-[999]">
+                        <BasketModal />
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
       </header>
     </div>
