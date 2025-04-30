@@ -25,8 +25,8 @@ function WishList() {
         </button>
       </div>
       <div className="flex items-center gap-[30px] flex-wrap py-[30px] min-h-[60vh]">
-        {wish.map((item) => (
-          <div className="border card hover:shadow-md transition-all rounded-md p-3 bg-white inline-block">
+        {wish.map((item,i) => (
+          <div key={i} className="border card hover:shadow-md transition-all rounded-md p-3 bg-white inline-block">
             <div className="relative">
               <svg
                 onClick={() => delWish(item.id)}

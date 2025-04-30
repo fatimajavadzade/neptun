@@ -22,20 +22,14 @@ const iconData = [
   'https://neptun.az/image/catalog/icon-menu/elektronika-v%C9%99-mebel.svg'
 ];
 
-function ResponsiveCategories({ onClose }) {
-  const [data, setData] = useState([]);
+function ResponsiveCategories({data}) {
   const [activeIndex, setActiveIndex] = useState(null);
-
-  useEffect(() => {
-    getAllCategories().then((res) => setData(res));
-  }, []);
-
   const toggleCategory = (index) => {
     setActiveIndex(index == activeIndex ? null : index);
   };
 
   return (
-    <div className="fixed left-0 z-[9999] bg-white overflow-y-auto w-[80%] max-w-xs shadow-xl h-screen text-black">
+    <div className="absolute left-[-5px] z-[9999] bg-white overflow-y-auto  w-[250px] xl:w-[240px] max-w-xs shadow-xl h-screen text-black">
       <ul className="divide-y divide-gray-200 text-black">
         {data.map((item, i) => (
           <li key={i}>
@@ -56,7 +50,6 @@ function ResponsiveCategories({ onClose }) {
                     <Link
                       to={`/category/${sub.id}`}
                       className="block text-[13px]  hover:text-orange-500"
-                      onClick={onClose}
                     >
                       {sub.categoryName}
                     </Link>

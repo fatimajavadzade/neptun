@@ -19,7 +19,7 @@ function WishContext({ children }) {
       setWish([...wish, item]);
       toast.success("Kasibligini uzune vurdun!");
       localStorage.setItem("localWish", JSON.stringify([...wish, item]));
-    }else toast.error("Besdirde tay")
+    } else toast.error("Besdirde tay");
   }
 
   function clearWish() {

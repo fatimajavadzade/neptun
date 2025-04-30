@@ -60,7 +60,7 @@ const Basket = () => {
           </select>
         </div>
 
-        <d  iv className="w-1/2 bg-white p-4 border rounded shadow-sm">
+        <div className="w-1/2 bg-white p-4 border rounded shadow-sm">
           <div className="flex justify-between mb-2">
             <span>Məbləğ:</span>
             <span>{total.toFixed(2)}₼</span>
@@ -69,7 +69,7 @@ const Basket = () => {
             <span>Ümumi məbləğ:</span>
             <span>{total.toFixed(2)}₼</span>
           </div>
-        </d>
+        </div>
       </div>
 
       <div className="my-8 flex flex-col md:flex-row justify-between gap-4">

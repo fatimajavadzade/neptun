@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FiChevronRight } from "react-icons/fi";
-import { getAllCategories } from "../services/api";
 import { Link } from "react-router-dom";
 
 const iconData = [
@@ -23,12 +22,8 @@ const iconData = [
   'https://neptun.az/image/catalog/icon-menu/elektronika-v%C9%99-mebel.svg'
 ]
 
-function Categories() {
-  const [data, setData] = useState([])
-
-  useEffect(() => {
-    getAllCategories().then(res => setData(res))
-  }, [])
+function Categories({data}) {
+ 
   return (
     <section
       className="relative flex"

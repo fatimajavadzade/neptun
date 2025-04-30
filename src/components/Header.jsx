@@ -18,6 +18,7 @@ import { useMatchMedia } from "./hooks/useMatchWidth.jsx";
 import ResponsiveCategories from "./ResponsiveCategories.jsx";
 import BasketModal from "./BasketModal.jsx";
 import { BASKET } from "../contexts/BasketContext.jsx";
+import { getAllCategories } from "../services/api";
 
 function Header() {
   const [search, setSearch] = useState("");
@@ -34,7 +35,11 @@ function Header() {
     } else {
       document.body.style.overflow = "auto";
     }})
- 
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+      getAllCategories().then(res => setData(res))
+    }, [])
     useEffect(() => {
     if (search.length > 1) {
       searchProducts(search).then((info) => {
@@ -52,12 +57,15 @@ function Header() {
     }
   }, [isSmallScreen]);  
   
- 
+ document.getElementsByTagName("body")[0].onclick=()=>{
+  setIsBasketOpen(false);
+  setOpen(false);
+ }
 
   return (
     <div>
-      <header className="bg-[#fff] mb-[-1px] relative">
-        <div className="n-container">
+      <header className="bg-[#fff] mb-[-1px] ">
+        <div className="n-container ">
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center justify-between gap-4">
               <Link
@@ -283,7 +291,7 @@ function Header() {
             </div>
           </div>
           <div className="bg-orange-500">
-            <div className=" n-container w-[1350px] text-white text-sm font-semibold mb-3 pr-40 ">
+            <div className=" n-container relative w-[1350px] text-white text-sm font-semibold mb-3 pr-40 ">
               <div className="flex items-center justify-between h-11 pr-4 mb-5">
                 {/* Sol tərəf */}
                 <div className="flex items-center gap-6">
@@ -298,20 +306,22 @@ function Header() {
                       <span>Kateqoriyalar</span>
                     </div>
 
-                  <div onClick={()=>setOpen(!open)
+                  <div onClick={(e)=>{
+                    e.stopPropagation()
+                    setOpen(!open)}
                   } className="flex lg:hidden w-11 h-11 justify-center items-center font-semibold shadow-sm cursor-pointer">
                     <FaBars className="text-white text-xl" />
                   </div>
                 
                   
-                { open && <ResponsiveCategories />}
+                { open && <ResponsiveCategories data={data} />}
 
                   {/* Bu yalnız Kateqoriyalar menyusudur */}
                   { useMatchMedia("(min-width:1024px)")&& <div
-                    className={`absolute top-full left-0 w-[190px] xl:w-[240px]  bg-white shadow-md z-50
+                    className={`absolute top-full left-0 w-[190px] xl:w-[240px]  bg-white shadow-md z-50 
                     ${isHome ? "block" : "hidden group-hover:block"}`}
                       >
-                        <Categories />
+                        <Categories  data={data}/>
                       </div>
                     }
                   </div>
@@ -363,7 +373,10 @@ function Header() {
                   </Link>
                   <FaSyncAlt className="cursor-pointer hover:text-gray-100" />
                   <div
-                    onClick={() => setIsBasketOpen(!isBasketOpen)}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setIsBasketOpen(!isBasketOpen)
+                    }}
                     className="relative cursor-pointer"
                   >
                     <FaShoppingCart className="text-xl" />

@@ -1,20 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProductsById } from "../../services/api";
 import { FaRegStar } from "react-icons/fa";
 import Button from "../Button";
 import { RiArrowRightWideLine } from "react-icons/ri";
 import Error404 from "../Error404";
+import toast from "react-hot-toast";
+import { BASKET } from "../../contexts/BasketContext";
 
 function Detail() {
   const { id } = useParams();
   const [product, setProduct] = useState({});
   const [error, setError] = useState(false);
+  const [say,setSay]=useState(1);
+   const { basket, setBasket } = useContext(BASKET);
   useEffect(() => {
     getProductsById(id)
       .then((res) => setProduct(res))
       .catch((err) => setError(true));
   }, [id]);
+
+  function addToBasket(id, name, price, img) {
+   
+    let item = { id, price, img, name, count:say };
+    const yoxla = basket.find((el) => el.id == item.id);
+    if (yoxla) {
+      yoxla.count+=say;
+      toast.error("Sepetde var onsuzda")
+    } else {
+      setBasket([...basket, item]);
+      toast.success("Məhsul səbətə əlavə olundu!");
+    }
+    console.log(basket)
+   }
+  function changeCount(param){
+    if(param==="plus"){
+     say<50 && setSay(say+1)
+    }
+    else{
+     say>1 && setSay(say-1)
+    }       
+    console.log(say)
+}
 
   if (error) return <Error404 />;
 
@@ -58,20 +85,28 @@ function Detail() {
             {product.price}₼
           </p>
           <div className="flex justify-between w-[150px] my-4">
-            <button className="px-5 cursor-pointer text-[20px] text-primary font-bold">
-              -
-            </button>
-            <p className=" text-[17px] mt-1">
-              1{" "}
-              <span className="text-[11px] inline-block  translate-y-[-4px] ms-1">
-                Eded
-              </span>
-            </p>
-            <button className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
-              +
-            </button>
+          <button onClick={(e)=>{
+                e.stopPropagation();
+                e.preventDefault()
+                changeCount("minus")}} className="px-5 cursor-pointer text-[20px] text-primary font-bold">
+                -
+              </button>
+              <p className=" text-[17px] mt-1">
+                {say}
+                <span className="text-[11px] inline-block  translate-y-[-4px] ms-1">
+                  Eded
+                </span>
+              </p>
+              <button onClick={(e)=>{e.preventDefault()
+              e.stopPropagation();
+              e.preventDefault();
+                 changeCount("plus")}} className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
+                +
+              </button>
           </div>
-          <Button label={"Səbətə at"} className="py-2 px-3" />
+          <Button label={"Səbətə at"} className="py-2 px-3"   func={() => {
+                addToBasket(product?.id, product?.name, product?.price, product?.img);
+              }} />
         </div>
       </div>
     </div>

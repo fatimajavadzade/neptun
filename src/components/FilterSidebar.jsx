@@ -1,3 +1,4 @@
+import { Slider } from "antd";
 import React, { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -5,7 +6,7 @@ const FilterSidebar = () => {
   const [openBrand, setOpenBrand] = useState(true);
   const [openPrice, setOpenPrice] = useState(true);
   const [price, setPrice] = useState(15);
-
+  const [value, setValue] = useState([0, 100]);
   return (
     <div className="w-[260px] bg-[#fff] text-black p-4 rounded-xl space-y-4 shadow">
       <h2 className="text-lg font-semibold">Filtr</h2>
@@ -53,14 +54,7 @@ const FilterSidebar = () => {
               <span>0</span>
               <span>15</span>
             </div>
-            <input
-              type="range"
-              min="0"
-              max="15"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              className="w-full accent-orange-500"
-            />
+            <Slider range={{ draggableTrack: true }} defaultValue={value} />
           </div>
         )}
       </div>

@@ -18,17 +18,11 @@
   z-index: 10 !important;
 }
 
-.swiper-button-prev {
-  /* left: -30px !important; */
+.ant-slider-track {
+ background-color: orange !important;
+
 }
 
-.swiper-button-next {
-  /* right: -30px !important; */
-}
-
-.ant-select-selector {
-  display: none !important;
-}
 
 
 .swiper-button-next:hover,

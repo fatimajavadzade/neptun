@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "./Button";
-import { BsHeart } from "react-icons/bs";
+import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { BASKET } from "../contexts/BasketContext";
@@ -9,15 +9,14 @@ import toast from "react-hot-toast";
 
 function Card({ item, discounted }) {
   const { basket, setBasket } = useContext(BASKET);
-
-  const { addWish } = useContext(WishListCntx);
-  // console.log(wish);
-
-  function addToBasket(id, name, price, img, count = 1) {
-    let item = { id, price, img, name, count };
+  const [say,setSay]=useState(1);
+  const { wish,delWish,addWish } = useContext(WishListCntx);
+  function addToBasket(id, name, price, img) {
+   
+    let item = { id, price, img, name, count:say };
     const yoxla = basket.find((el) => el.id == item.id);
     if (yoxla) {
-      yoxla.count++;
+      yoxla.count+=say;
       toast.error("Sepetde var onsuzda")
     } else {
       setBasket([...basket, item]);
@@ -25,26 +24,39 @@ function Card({ item, discounted }) {
     }
     console.log(basket)
    }
-   function changeCount(item,param){
-          if(param=="plus"){
-            item.count++
+   function changeCount(param){
+          if(param==="plus"){
+           say<50 && setSay(say+1)
           }
           else{
-            item.count--
-          }
-          
+           say>1 && setSay(say-1)
+          }       
+          console.log(say)
    }
+ 
   return (
     <Link to={`/products/${item.id}`}>
       <div className="group rounded-md  dark:bg-gray-50 dark:text-gray-800 min-w-[100px] h-full flex flex-col items-center justify-center">
         <div className="relative w-[112px] h-[112px] m-auto flex flex-col  items-center justify-center ">
           <button className="absolute z-9 top-1 right-2 cursor-pointer text-primary">
-            <BsHeart
-              onClick={(e) => {
-                e.preventDefault();
-                addWish(item);
-              }}
-            />
+          {
+  wish.find(el => el.id === item.id) ? (
+    <BsHeartFill
+      onClick={(e) => {
+        e.preventDefault();
+        delWish(item.id);
+      }}
+    />
+  ) : (
+    <BsHeart
+      onClick={(e) => {
+        e.preventDefault();
+        addWish(item);
+      }}
+    />
+  )
+}
+           
           </button>
           {discounted && (
             <button
@@ -92,18 +104,22 @@ function Card({ item, discounted }) {
               {(item?.price - item?.price * 0.3).toFixed(2)}₼
             </div>
             <div className="flex justify-between">
-              <button onClick={()=>changeCount(item,"minus")} className="px-5 cursor-pointer text-[20px] text-primary font-bold">
+              <button onClick={(e)=>{
+                e.stopPropagation();
+                e.preventDefault()
+                changeCount("minus")}} className="px-5 cursor-pointer text-[20px] text-primary font-bold">
                 -
               </button>
               <p className=" text-[17px] mt-1">
-                {item?.count}
+                {say}
                 <span className="text-[11px] inline-block  translate-y-[-4px] ms-1">
                   Eded
                 </span>
               </p>
               <button onClick={(e)=>{e.preventDefault()
-              e.stopPropagation()
-                 changeCount(item,"plus")}} className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
+              e.stopPropagation();
+              e.preventDefault();
+                 changeCount("plus")}} className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
                 +
               </button>
             </div>
