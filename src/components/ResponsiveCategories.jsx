@@ -29,7 +29,9 @@ function ResponsiveCategories({data}) {
   };
 
   return (
-    <div className="absolute left-[-5px] z-[9999] bg-white overflow-y-auto  w-[250px] xl:w-[240px] max-w-xs shadow-xl h-screen text-black">
+    <div 
+      onClick={(e) => e.stopPropagation()}
+      className="absolute left-[-5px] z-[9999] bg-white overflow-y-auto  w-[250px] xl:w-[240px] max-w-xs shadow-xl h-screen text-black">
       <ul className="divide-y divide-gray-200 text-black">
         {data.map((item, i) => (
           <li key={i}>
