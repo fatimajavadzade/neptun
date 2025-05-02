@@ -28,6 +28,7 @@ function ProdByCategory() {
       })
       .catch((err) => setError(true));
   }, [id, limit, page]);
+
   useEffect(() => {
     const sorted = data?.products?.sort(
       (a, b) =>
@@ -35,11 +36,13 @@ function ProdByCategory() {
         b.price * (b.discount / 100) -
         (a.price - a.price * (a.discount / 100))
     );
+
     if (sorted) {
       setValue([sorted.at(-1).price, sorted[0].price]);
       setPrice([sorted.at(-1).price, sorted[0].price]);
     }
   }, [data, limit]);
+
   useEffect(() => {
     const min = price?.[0] ?? value[0];
     const max = price?.[1] ?? value[1];
@@ -57,6 +60,7 @@ function ProdByCategory() {
   }, [price, value, data]);
 
   if (error) return <Error404 />;
+  
   if (!data)
     return (
       <div className="h-[60vh] w-full flex items-center justify-center">
