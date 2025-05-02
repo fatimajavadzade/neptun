@@ -1,16 +1,20 @@
 import React from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
-import Home from "./components/Home";
-import ProdByCategory from "./components/ProductByCategory/ProdByCategory";
-import Detail from "./components/Details/Detail";
-import SearchDetails from "./components/searchDetails";
-import Error404 from "./components/Error404";
-import Landing from "./Layout/Landing";
 import { useEffect } from "react";
-import scrollToTop from "./utils/scrollToTop";
-import Basket from "./components/Basket";
-import WishList from "./components/WishList";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
+import scrollToTop from "./utils/scrollToTop";
+
+// Pages
+import Landing from "./Layout/Landing";
+import Home from "./pages/Home";
+import ProdByCategory from "./pages/ProdByCategory";
+import Detail from "./pages/Detail";
+import SearchDetails from "./pages/SearchDetails";
+import Error404 from "./pages/error/Error404";
+import Basket from "./pages/Basket";
+import WishList from "./pages/WishList";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   const { pathname } = useLocation();
@@ -27,6 +31,8 @@ function App() {
           <Route path="/searchDetails" element={<SearchDetails />} />
           <Route path="/wishlist" element={<WishList />} />
           <Route path="/basket" element={<Basket />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/create-account" element={<Register />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>

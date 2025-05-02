@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaSyncAlt, FaThLarge, FaBars } from "react-icons/fa";
-import Button from "./Button";
-import Card from "./Card";
+import Button from "../components/Button";
+import Card from "../components/Card";
 import { getAllProducts } from "../services/api";
 import { RiArrowRightWideLine } from "react-icons/ri";
 

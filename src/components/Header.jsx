@@ -362,7 +362,7 @@ function Header() {
                   <div className="hidden lg:flex items-center gap-4">
                     <div className="flex items-center gap-1 cursor-pointer hover:underline">
                       <FaLock />
-                      <span>Giriş</span>
+                      <Link to='/login'>Giriş</Link>
                     </div>
                     <div className="flex items-center gap-1 cursor-pointer hover:underline">
                       <span>Hesabım</span>

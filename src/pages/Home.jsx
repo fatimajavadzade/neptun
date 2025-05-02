@@ -1,8 +1,8 @@
 import React from "react";
-import Main from "./Main";
-import Slider from "./Slider";
-import Cards from "./Cards";
-import { useMatchMedia } from "./hooks/useMatchWidth";
+import Slider from "../components/Slider"
+import Cards from "../components/Cards"
+import Main from "../components/Main";
+import { useMatchMedia } from "../components/hooks/useMatchWidth";
 
 
 function Home() {

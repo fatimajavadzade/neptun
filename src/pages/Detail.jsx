@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProductsById } from "../../services/api";
+import { getProductsById } from "../services/api";
 import { FaRegStar } from "react-icons/fa";
-import Button from "../Button";
+import Button from "../components/Button";
 import { RiArrowRightWideLine } from "react-icons/ri";
-import Error404 from "../Error404";
+
 import toast from "react-hot-toast";
-import { BASKET } from "../../contexts/BasketContext";
+import { BASKET } from "../contexts/BasketContext";
+import Error404 from "./error/Error404";
 
 function Detail() {
   const { id } = useParams();

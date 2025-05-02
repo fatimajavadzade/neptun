@@ -101,7 +101,7 @@ function Card({ item, discounted }) {
                   </div>
                 </>
               )}
-              {(item?.price - item?.price * 0.3).toFixed(2)}₼
+              {(item?.price - (item?.price * (item.discount/100))).toFixed(2)}₼
             </div>
             <div className="flex justify-between">
               <button onClick={(e)=>{

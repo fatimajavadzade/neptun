@@ -46,7 +46,7 @@ function Categories({data}) {
               <FiChevronRight className="text-[#222] w-[14px] h-[14px]" />
               {
                 item.subcategory.length > 0 &&
-                <div className="absolute hidden menuSub left-[240px] top-0 w-[220px] min-w-[200px]  bg-white shadow-md border border-gray-200 z-100" >
+                <div className="absolute hidden menuSub left-[100%] top-0 w-[220px] min-w-[200px]  bg-white shadow-md border border-gray-200 z-100" >
                   <ul className="py-2 px-3">
                     {
                     
