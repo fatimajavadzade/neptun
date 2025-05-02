@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import Button from '../components/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { login } from '../services/api'
 
 
 function Login() {
- 
+ const[error,setError]=useState('')
 const [loginForm,setLoginForm]=useState({login:'',password:""})
+const navigate=useNavigate()
 
 function handleInput(e){
-  setLoginForm({...loginForm,[e.target.name]:e.target.value})
+  setLoginForm({...loginForm,[e.target.name]:e.target.value});
+  setError('');
 }
 
 function handleSubmit(e){
@@ -20,7 +22,10 @@ function handleSubmit(e){
     localStorage.setItem("login-token",res.data.token);
     navigate('/')
   }
-})
+  else{
+    setError('sifre yada pasword sehvdir')
+  }
+}).catch(err=>setError('sirfe ve ya parol sehvdir'))
 }
 
   return (
@@ -46,6 +51,7 @@ function handleSubmit(e){
     <label htmlFor="password">Password</label>
     <input onChange={handleInput} type="password" id='password' name='password' required />
   </div>
+  {error&& <p className='text-red-500 text-[10px] italic font-bold'>{error}</p>  }
      <Button type='submit' label='Giris' />
     
   </form>
