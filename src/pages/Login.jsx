@@ -7,7 +7,7 @@ import { login } from '../services/api'
 function Login() {
  
 const [loginForm,setLoginForm]=useState({login:'',password:""})
-const [data,setData]=useState()
+
 function handleInput(e){
   setLoginForm({...loginForm,[e.target.name]:e.target.value})
 }
@@ -15,12 +15,12 @@ function handleInput(e){
 function handleSubmit(e){
   e.preventDefault();
   login(loginForm)
-  .then((res)=>setData(res));
-  if(data.token){
-    localStorage.setItem("login-token",data.token);
+  .then((res)=>{
+  if(res.data.token){
+    localStorage.setItem("login-token",res.data.token);
     navigate('/')
   }
-
+})
 }
 
   return (
