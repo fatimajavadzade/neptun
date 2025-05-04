@@ -9,7 +9,6 @@ import FilterSidebar from "../components/FilterSidebar";
 import { useParams } from "react-router-dom";
 import Error404 from "./error/Error404";
 
-
 function ProdByCategory() {
   const [data, setData] = useState();
   const [filtered, setFiltered] = useState([]);
@@ -17,7 +16,7 @@ function ProdByCategory() {
   const [page, setPage] = useState(1);
   const [error, setError] = useState(false);
   const { id } = useParams();
-  const [value, setValue] = useState([]);
+  const [value, setValue] = useState([0, 5]);
   const [price, setPrice] = useState([]);
 
   useEffect(() => {
@@ -60,7 +59,7 @@ function ProdByCategory() {
   }, [price, value, data]);
 
   if (error) return <Error404 />;
-  
+
   if (!data)
     return (
       <div className="h-[60vh] w-full flex items-center justify-center">
