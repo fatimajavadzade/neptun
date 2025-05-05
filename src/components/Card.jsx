@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useRef  } from "react";
 import Button from "./Button";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -33,7 +33,25 @@ function Card({ item, discounted }) {
           }       
           console.log(say)
    }
- 
+    
+   
+   // ********************
+   const [intervalId, setIntervalId] = useState(null);
+
+
+   // Basıb saxlamada interval ilə changeCount çağırmaq
+   function handleHold(param) {
+     changeCount(param); 
+     const id = setInterval(() => changeCount(param), 10); 
+     setIntervalId(id);
+   }
+   
+   function stopHold() {
+     clearInterval(intervalId);
+     setIntervalId(null);
+   }
+
+
   return (
     <Link to={`/products/${item.id}`}>
       <div className="group rounded-md  dark:bg-gray-50 dark:text-gray-800 min-w-[100px] h-full flex flex-col items-center justify-center">
@@ -104,10 +122,17 @@ function Card({ item, discounted }) {
               {(item?.price - (item?.price * (item.discount/100))).toFixed(2)}₼
             </div>
             <div className="flex justify-between">
-              <button onClick={(e)=>{
-                e.stopPropagation();
-                e.preventDefault()
-                changeCount("minus")}} className="px-5 cursor-pointer text-[20px] text-primary font-bold">
+              <button 
+                onMouseDown={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  handleHold("plus");
+                }}
+                onMouseUp={stopHold}
+                onMouseLeave={stopHold}
+                onTouchEnd={stopHold}
+                
+                className="px-5 cursor-pointer text-[20px] text-primary font-bold">
                 -
               </button>
               <p className=" text-[17px] mt-1">
@@ -116,10 +141,16 @@ function Card({ item, discounted }) {
                   Eded
                 </span>
               </p>
-              <button onClick={(e)=>{e.preventDefault()
-              e.stopPropagation();
-              e.preventDefault();
-                 changeCount("plus")}} className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
+              <button 
+                 onMouseDown={(e) => {
+                  e.stopPropagation();
+                  e.preventDefault();
+                  handleHold("plus");
+                }}
+                onMouseUp={stopHold}
+                onMouseLeave={stopHold}
+                onTouchEnd={stopHold}
+                 className="px-5  cursor-pointer text-[20px]  text-primary font-bold">
                 +
               </button>
             </div>

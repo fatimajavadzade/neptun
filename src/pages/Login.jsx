@@ -20,6 +20,7 @@ function Login() {
         if (res.data.token) {
           localStorage.setItem('login-token', res.data.token);
           navigate('/');
+          alert(`xos geldiz ${loginForm.login}!`);
         } else {
           setError('Şifrə və ya istifadəçi adı yanlışdır');
         }

@@ -4,44 +4,52 @@ import { register } from '../services/api';
 import Button from '../components/Button';
 
 function Register() {
+  const [checked,setChecked]=useState(false)
   const [form, setForm] = useState({
-    name: '',
+    login: '',
     password: '',
   });
+
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+
     setForm({
       ...form,
-      [name]: type === 'checkbox' ? checked : value,
+      [e.target.name]:e.target.value,
     });
     setError('');
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.termsAccepted) {
+
+    if (!checked) {
       setError('Qaydalarla razılaşmaq vacibdir.');
       return;
     }
+
     if (form.password.length < 8) {
       setError('Şifrənin uzunluğu minimum 8 simvol olmalıdır.');
       return;
     }
-
+       console.log(form)
     register(form)
       .then((res) => {
         const token = res.data.token;
+        console.log('klj',token)
         if (token) {
           localStorage.setItem('register-token', token);
           navigate('/');
+          alert('xos geldiz!')
         } else {
           setError('Qeydiyyat zamanı xəta baş verdi.');
         }
       })
-      .catch(() => setError('Server xətası baş verdi.'));
+      .catch((err) => {
+        setError(err?.response?.data?.message || 'Qeydiyyat zamanı xəta baş verdi.');
+      });
   };
 
   return (
@@ -56,14 +64,23 @@ function Register() {
 
           <input
             type="text"
-            name="name"
+            name="login"
             placeholder="Ad"
             value={form.name}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded"
             required
           />
-              </div>
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+           
+            className="w-full px-4 py-2 border rounded"
+            required
+          />
+        </div>
 
         {/* Şifrə */}
         <div className="space-y-2">
@@ -79,50 +96,23 @@ function Register() {
           />
         </div>
 
-        {/* Xəbər bülleteni */}
-        {/* <div className="space-y-2">
-          <h2 className="text-xl font-semibold">Xəbər bülleteni</h2>
-          <div className="flex gap-4">
-            <label className="flex items-center gap-1">
-              <input
-                type="radio"
-                name="newsletter"
-                value="yes"
-                checked={form.newsletter === 'yes'}
-                onChange={handleChange}
-              />
-              Bəli
-            </label>
-            <label className="flex items-center gap-1">
-              <input
-                type="radio"
-                name="newsletter"
-                value="no"
-                checked={form.newsletter === 'no'}
-                onChange={handleChange}
-              />
-              Xeyr
-            </label>
-          </div>
-        </div> */}
-
         {/* Qaydalar */}
-        {/* <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2">
           <input
             type="checkbox"
             name="termsAccepted"
-            checked={form.termsAccepted}
-            onChange={handleChange}
+            onChange={()=>setChecked(!checked)}
           />
           <label>
             Mən <span className="font-semibold">Qaydalar</span>-ı oxudum və razıyam
           </label>
-        </div> */}
+        </div>
 
+        {/* Error mesajı */}
         {error && <p className="text-red-500 font-medium">{error}</p>}
 
-        {/* Submit */}
-        <Button type="submit" label="Davam et" disabled={!form.termsAccepted} />
+        {/* Submit düyməsi */}
+        <Button type="submit" label="Davam et" />
       </form>
     </div>
   );
