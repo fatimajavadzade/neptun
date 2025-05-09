@@ -13,8 +13,10 @@ import SearchDetails from "./pages/SearchDetails";
 import Error404 from "./pages/error/Error404";
 import Basket from "./pages/Basket";
 import WishList from "./pages/WishList";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+import UserPage from "./user/userPage";
+import VerifyUser from "./auth/VerifyUser";
 
 function App() {
   const { pathname } = useLocation();
@@ -33,6 +35,9 @@ function App() {
           <Route path="/basket" element={<Basket />} />
           <Route path="/login" element={<Login />} />
           <Route path="/create-account" element={<Register />} />
+        </Route>
+        <Route path="/user" element={<VerifyUser/>}> 
+          <Route index element={<UserPage />} />
         </Route>
         <Route path="*" element={<Error404 />} />
       </Routes>

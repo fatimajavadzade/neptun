@@ -9,7 +9,7 @@ import {
   FaBars,
 } from "react-icons/fa";
 import Categories from "./Categories.jsx";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { aze, contact } from "../assets/index.js";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -19,8 +19,11 @@ import ResponsiveCategories from "./ResponsiveCategories.jsx";
 import BasketModal from "./BasketModal.jsx";
 import { BASKET } from "../contexts/BasketContext.jsx";
 import { getAllCategories } from "../services/api";
+import { Cookies } from "react-cookie";
+
 
 function Header() {
+  const cook = new Cookies()
   const [search, setSearch] = useState("");
   const [searchData, setSearchData] = useState([]);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
@@ -29,6 +32,8 @@ function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   let isSmallScreen=useMatchMedia("(max-width:1024px)")
+
+  const navigate = useNavigate()
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -40,6 +45,7 @@ function Header() {
     useEffect(() => {
       getAllCategories().then(res => setData(res))
     }, [])
+
     useEffect(() => {
     if (search.length > 1) {
       searchProducts(search).then((info) => {
@@ -50,6 +56,10 @@ function Header() {
     }
   }, [search]);
 
+  function logOut() {
+    cook.remove("login-token")
+    navigate("/")
+  }
   
   useEffect(() => {
     if (!isSmallScreen) {
@@ -361,11 +371,16 @@ function Header() {
                 <div className="flex items-center gap-4">
                   <div className="hidden lg:flex items-center gap-4">
                     <div className="flex items-center gap-1 cursor-pointer hover:underline">
-                      <FaLock />
-                      <Link to='/login'>Giriş</Link>
+                    {
+                      !cook.get("login-token") ? <>
+                        <FaLock />
+                        <Link to='/login'>Giriş</Link>
+                      </> :
+                      <button onClick={logOut}>Cixis et</button>
+                    }
                     </div>
                     <div className="flex items-center gap-1 cursor-pointer hover:underline">
-                      <span>Hesabım</span>
+                      <Link to={cook.get("login-token") ? "/user" : "/login"}>Hesabım</Link>
                     </div>
                   </div>
                   <Link to={"/wishlist"}>
