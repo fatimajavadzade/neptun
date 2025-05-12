@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../services/api';
 import Button from '../components/Button';
+import { Cookies } from 'react-cookie';
 
 function Login() {
+  const cook = new Cookies()
+
   const [error, setError] = useState('');
   const [loginForm, setLoginForm] = useState({ login: '', password: '' });
   const navigate = useNavigate();
@@ -18,7 +21,7 @@ function Login() {
     login(loginForm)
       .then((res) => {
         if (res.data.token) {
-          localStorage.setItem('login-token', res.data.token);
+          cook.set('login-token', res.data.token)
           navigate('/');
           alert(`xos geldiz ${loginForm.login}!`);
         } else {

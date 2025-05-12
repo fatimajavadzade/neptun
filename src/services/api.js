@@ -47,6 +47,11 @@ async function register(user){
     const res= await axiosInstance.post(`/auth/register`,user);
     return res;
 }
+
+async function verifyToken(){
+    const res= await axiosInstance.get(`/auth/verify-token`);
+    return res.data;
+}
 export {
     getAllCategories,
     getProductsById,
@@ -56,5 +61,6 @@ export {
     getProdBySubId,
     searchProducts,
     login,
-    register
+    register,
+    verifyToken
 };
