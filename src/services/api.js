@@ -2,18 +2,14 @@ import addCount from "../utils/addCount";
 import axiosInstance from "./axiosInstance";
 
 
-
+const cache={}
 async function getAllCategories() {
     const res = await axiosInstance.get(`/categories`);
     return res.data;
 };
 
 async function getAllProducts() {
-    const res = await axiosInstance.get(`/products`,{
-        cache: {
-          ttl: 1000 * 60 * 5 ,
-          staleWhileRevalidate: true
-        }});
+    const res = await axiosInstance.get(`/products`);
     return addCount(res.data);
 };
 
@@ -23,11 +19,7 @@ async function getProductsById(id) {
 };
 
 async function getProdBySubId(id, limit, page) {
-    const res = await axiosInstance.get(`/products/subcategory/${id}?limit=${limit}&page=${page}`,{
-        cache: {
-          ttl: 1000 * 60 * 5 ,
-          staleWhileRevalidate: true
-        }})
+    const res = await axiosInstance.get(`/products/subcategory/${id}?limit=${limit}&page=${page}`)
     return addCount(res.data)
 };
 
